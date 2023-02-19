@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsComponent, StackblitzComponent, TempComponent } from './components';
 import { ServicesComponent } from './services';
+import { PipesComponent } from './pipes';
 
 const routes: Routes = [
   { path: 'service', component: ServicesComponent },
+  { path: 'pipe', component: PipesComponent },
   { path: 'component',   
     component: ComponentsComponent ,
     children: [

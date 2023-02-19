@@ -4,11 +4,13 @@ import { AngularRoutingModule } from './angular-routing.module';
 import { ComponentsComponent, StackblitzComponent, TempComponent } from './components';
 import { ServicesComponent } from './services';
 import { SharedModule } from 'src/app/shared';
+import { PipesComponent } from './pipes/pipes.component';
 
 @NgModule({
   declarations: [
     ComponentsComponent, StackblitzComponent, TempComponent,
-    ServicesComponent
+    ServicesComponent,
+    PipesComponent
   ],
   imports: [
     CommonModule,

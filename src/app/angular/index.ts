@@ -1,2 +1,3 @@
 export * from './angular.module';
-export * from './components/components.component';
+export * from './components';
+export * from './services';

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //
@@ -18,15 +19,16 @@ import { AngularModule } from './angular'; // 獨立一塊
     AppComponent
   ],
   imports: [
-    BrowserModule, //FormsModule, ReactiveFormsModule,
+    BrowserModule, 
+    HttpClientModule, // 若要使用 http 連線
     AppRoutingModule,
+    //FormsModule, ReactiveFormsModule,
     //
     SharedModule, HomeModule, 
     AdminlteModule, LayoutModule, AngularModule,
     // material UI => BrowserAnimationsModule, 
   ],
   exports: [
-
   ],
   providers: [
     { provide: Window, useValue: window }     // 匯入 window 物件, 可使用 DI

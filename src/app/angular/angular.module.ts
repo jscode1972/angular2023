@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularRoutingModule } from './angular-routing.module';
-import { ComponentsComponent } from './components/components.component';
-import { StackblitzComponent } from './components/pages/stackblitz/stackblitz.component';
+import { ComponentsComponent, StackblitzComponent, TempComponent } from './components';
+import { ServicesComponent } from './services';
 import { SharedModule } from 'src/app/shared';
 
 @NgModule({
   declarations: [
-    ComponentsComponent, StackblitzComponent
+    ComponentsComponent, StackblitzComponent, TempComponent,
+    ServicesComponent
   ],
   imports: [
     CommonModule,

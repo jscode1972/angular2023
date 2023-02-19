@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComponentsComponent } from './components/components.component';
-import { StackblitzComponent } from './components/pages/stackblitz/stackblitz.component';
+import { ComponentsComponent, StackblitzComponent, TempComponent } from './components';
+import { ServicesComponent } from './services';
 
 const routes: Routes = [
+  { path: 'service', component: ServicesComponent },
   { path: 'component',   
     component: ComponentsComponent ,
     children: [
       { path: 'stackblitz', component: StackblitzComponent }, 
-      { path: '', redirectTo: 'compo', pathMatch: 'full' },  
+      { path: 'temp', component: TempComponent }, 
+      //{ path: '', redirectTo: 'stackblitz', pathMatch: 'full' },  
     ]
   },
-  { path: '', redirectTo: 'topics', pathMatch: 'full' }
+  //{ path: '', redirectTo: 'topics', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 //
 import { SharedModule } from './shared';
 import { HomeModule } from './home';
-import { AdminlteModule, CustomModule } from './layout';
+import { AdminlteModule, LayoutModule } from './layout';
+import { AngularModule } from './angular'; // 獨立一塊
 
 // Material-UI: https://material.angular.io/guide/getting-started
 // Material-UI: https://material.angular.io/components/tabs/examples
@@ -20,7 +21,8 @@ import { AdminlteModule, CustomModule } from './layout';
     BrowserModule, //FormsModule, ReactiveFormsModule,
     AppRoutingModule,
     //
-    SharedModule, HomeModule, AdminlteModule, CustomModule,
+    SharedModule, HomeModule, 
+    AdminlteModule, LayoutModule, AngularModule,
     // material UI => BrowserAnimationsModule, 
   ],
   exports: [

@@ -1,0 +1,83 @@
+<h6>元件</h6>  
+
+<app-multi-column>
+    <h6 card1>官網教學</h6>
+    <div card1>
+        <a href="https://angular.io/guide/binding-overview" target="_blank">Understanding binding</a><br/>
+        <a href="https://angular.io/guide/attribute-binding" target="_blank">Attribute binding</a><br/>
+        <a href="https://angular.io/guide/class-binding" target="_blank">Class and style binding  </a><br/>
+        <a href="https://angular.io/guide/event-binding" target="_blank">Event binding </a><br/>
+        <a href="https://angular.io/guide/property-binding" target="_blank">Property binding</a><br/>
+        <a href="https://angular.io/guide/two-way-binding" target="_blank">Two-way binding</a><br/>
+    </div>
+    
+    <h6 card2>基本繫結 <input type="checkbox" checked></h6>
+    <div card2>
+        <a href="{{blitz.text_interpolation}}" target="_blank">文件插值 (text-interpolation)</a><br/>
+        <a href="{{blitz.event_binding}}" target="_blank">事件繫結 (event-binding)</a> (click)="onSetFontSize(1)"<br/>
+        <a href="{{blitz.property_binding}}" target="_blank">屬性繫結(property-binding)</a> [disabled]="fontSize===16"<br/>
+        <a href="{{blitz.attribute_binding}}" target="_blank">屬性繫結(attribute-binding)[attr.disabled]</a><br/>
+          &nbsp; [attr.disabled]="fontSize === 16 ? 'disabled':null"<br/>
+        <a href="{{blitz.single_style_binding}}" target="_blank">樣式繫結 (single-style-binding)單值</a> [style.fontSize.pt]="fontSize"<br/>
+        <a href="{{blitz.mutli_style_binding}}" target="_blank">複合樣式 (mutli-style-binding)多值</a> [style]="'font-size: 12pt; color: red'"<br/>
+        <a href="{{blitz.class_binding}}" target="_blank">類別繫結(class-binding)[class]</a> [class]="fontClass"> (fontClass是函式)
+    </div>
+
+        
+    <h6 card3>巢狀互動 <input type="checkbox" checked></h6>
+    <div card3>
+        <a href="{{blitz.input_property}}" target="_blank">@Input裝飾器 (input-property)</a> <br/>
+          &nbsp; 注入子元件 [size]="fontSize" @Input() prop'<br/>
+        <a href="{{blitz.input_setter_property}}" target="_blank">@Input高活用 (input-setter-property)</a> <br/>
+          &nbsp;  注入子元件 size="12" @Input() set/get => 問題:上層可以取值嗎？ <br/>
+        <a href="{{blitz.attribute_property}}" target="_blank">@Attribute裝飾器 (attribute-property)</a> <br/>
+          &nbsp; 適合常數值(red) color="red" <br/>
+          &nbsp; constructor(@Attribute('color') public color: string)
+    </div>
+
+    <h6 card4>@Output <input type="checkbox" checked></h6>
+    <div card4>
+        <a href="{{blitz.output_event}}" target="_blank">通知父元件 (output-event)</a> <br/>
+          &nbsp; 注入子元件 (prop)="onChange($e)" 使用 new EventMitter() <br/>
+        <a href="{{blitz.two_way_binding}}" target="_blank">雙向繫結 (two-way-binding)</a> <br/> 
+          &nbsp; 注入子元件 [(屬性)]="值" <br/>
+        <a href="{{blitz.template_reference_variable}}" target="_blank">範本參考 (template-reference-variable)</a> <br/>
+          &nbsp; 父方主動取值 &lt;app-font-size #fontSize&gt; <br/>
+          &nbsp; [style.fontSize.pt]="fontSize.size"<br/>
+    </div>
+
+    <h6 card5>頁面範本</h6>
+    <div card5>
+        <a href="{{blitz.ng_template}}" target="_blank">頁面範本 (ng-template)</a> 重複使用<br/>
+          &nbsp;主:&lt;div *ngTemplateOutlet="sample"&gt;   <br/>
+          &nbsp;次:&lt;ng-template #sample&gt; <br/>
+        <a href="{{blitz.ng_template_variable}}" target="_blank">注入資料 (ng-template-variable)</a> <br/>
+          &nbsp;  &lt;父 context:&#123;..&#125;&gt; &lt;子 let-xx="xx"&gt; <br/>
+        <a href="{{blitz.ng_template_implicit}}" target="_blank">簡化設定 (ng-template-implicit)</a>  <br/>
+          &nbsp; $implicit & let-xx  
+    </div>
+
+    <h6 card6>動態內容投影</h6>
+    <div card6>
+        <a href="{{blitz.ng_content}}" target="_blank">插入內容 (ng-content)</a> 夾層插入 inner_html <br/>
+        <a href="{{blitz.form_container}}" target="_blank">豐富表單 (form-container)</a> 按選擇器定位插入多重區塊 (明天做元件)<br/>
+    </div>
+
+
+    <h6 card7>生命週期</h6>
+    <div card7>
+        <a href="{{blitz.changes_life}}" target="_blank">監控輸入屬性值 (changes-life)</a>原生變數 ngOnChanges <br/>
+        <a href="{{blitz.do_check_life}}" target="_blank">監控物件參考 (do-check-life)</a> 物件參考(reference) 只能 ngDoCheck
+        <hr/>還沒研究<br/>
+        <a href="{{blitz.content_life}}" target="_blank">監控動態投影 (content-life)</a> 子方監控 @ContentChild => 還沒研究<br/>
+        <a href="{{blitz.view_life}}" target="_blank">監控動態投影 (view-life)</a> 父方監控 @ViewChild => 還沒研究<br/>
+    </div>
+
+    <h6 card8>封裝模式 (樣式範圍) 不太懂</h6>
+    <div card8>
+        <a href="{{blitz.encapsulation_none}}" target="_blank">不封裝 (encapsulation-none</a> 難懂 <br/>
+        <a href="{{blitz.encapsulation_shadow}}" target="_blank">瀏覽器原生DOM (encapsulation-shadow-dom</a>難懂 <br/>
+        <a href="{{blitz.host_selector}}" target="_blank">host-selector</a>難懂 <br/>
+    </div>
+
+</app-multi-column>

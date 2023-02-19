@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomComponent } from './custom.component';
+import { ShadowButtonComponent } from './shadow-button.component';
 
-describe('CustomComponent', () => {
-  let component: CustomComponent;
-  let fixture: ComponentFixture<CustomComponent>;
+describe('ShadowButtonComponent', () => {
+  let component: ShadowButtonComponent;
+  let fixture: ComponentFixture<ShadowButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomComponent ]
+      declarations: [ ShadowButtonComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CustomComponent);
+    fixture = TestBed.createComponent(ShadowButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

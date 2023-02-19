@@ -1,0 +1,51 @@
+p {
+    font-family: Lato;
+  }
+  
+  nav {
+    padding: 10px 0;
+  }
+  
+  nav a {
+    margin-right: 10px;
+    border: solid 1px #999;
+    display: inline-block;
+    font-size: 12pt;
+    padding: 10px;
+    min-width: 80px;
+    text-align: center;
+  }
+  
+  nav a:link,
+  nav a:visited,
+  nav a:hover,
+  nav a:active {
+    color: black;
+    text-decoration: none;
+  }
+
+  nav a.active {
+    background-color: black;
+    color: white;
+  }
+
+  /*** 功能已打開 => 預設顯示 ***/
+  nav a.ok:link,
+  nav a.ok:visited {
+    color: black;
+    background-color: yellow;
+    text-decoration: none;
+  }
+  /**** 浮在上面  or 正按下 ****/
+  nav a.ok:hover,
+  nav a.ok:active {
+    color: white;
+    background-color: red;
+  }
+  /**** 已按下 ****/
+  nav a.ok.active {
+    color: white;
+    background-color: black;
+  }
+  /*** 自己改 ***/
+  

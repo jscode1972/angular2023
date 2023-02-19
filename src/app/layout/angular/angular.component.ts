@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Layout, LayoutService } from 'src/app/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-angular',
+  templateUrl: './angular.component.html',
+  styleUrls: ['./angular.component.css']
 })
-export class HeaderComponent {
+export class AngularComponent {
+  
   constructor(private layoutService : LayoutService ) {}
 
   set layout(value : Layout) {
@@ -16,4 +17,5 @@ export class HeaderComponent {
   get layout() : Layout {
     return this.layoutService.layout;
   }
+
 }

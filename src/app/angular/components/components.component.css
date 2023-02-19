@@ -1,0 +1,52 @@
+a { color:red; text-decoration-line: underline; }
+
+.wrapper {
+    display: flex; /* inline-flex 會變水平排, 但是內層自訂 width 無用*/
+    background-color: #eeeeee;
+    min-height: 500px;
+}
+
+/******** 選單配置 => 完美搭配 不要亂動 ********/
+
+div.left {
+    flex: none;
+    width: 200px;
+}
+
+div.left ul {
+    background-color: #37c247;
+    width: 100%;
+    list-style-type: none;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0;      /* 歸零 */
+    padding-bottom: 20px;  /* 改由裡面留白, 以免出現補丁 */
+    padding-left: 0;       /* li 子項 原本有縮排 歸零 */
+
+    min-height: 500px;
+}
+
+div.left ul li {
+    background-color: aqua;
+    color: black;
+    border: solid 1px #999;
+    flex: none;
+    width: 160px;
+    height: 50px;
+    margin-top: 10px;
+    /* 讓內層 上下致中 */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    justify-content: center;
+}
+
+div.content {
+    flex: auto;
+}
+
+a {
+    text-decoration: none;
+}
+

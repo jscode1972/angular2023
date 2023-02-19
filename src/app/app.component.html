@@ -2,7 +2,8 @@
 <div [ngSwitch]="layout">
     <app-adminlte *ngSwitchCase="1"></app-adminlte>
     <app-custom *ngSwitchCase="2"></app-custom>
-    <div *ngSwitchDefault="">預設</div>
+    <app-angular *ngSwitchCase="3"></app-angular>
+    <div *ngSwitchDefault="">未加入風格</div>
 </div>
 
 <!--<router-outlet></router-outlet>-->

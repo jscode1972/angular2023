@@ -1,0 +1,26 @@
+<nav>
+    <!---------------------------------------------------------------------------------
+     設定範例:
+     <a  routerLink="/" outerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> 首頁</a>
+     <a  routerLink ="aaa/xxx">xxxx</a>      
+     <a [routerLink]="'aaa/yyy'">yyyy</a>
+     <a [routerLink]="['aaa', 'zzz']">zzzz</a>
+    ----------------------------------------------- ---------------------------------->
+     <a routerLink="/"               routerLinkActive="active" class="ok"
+     [routerLinkActiveOptions]="{ exact: true }"> 首頁</a>
+ <!--------------------------------------------------------------------------------->
+     <a [routerLink]="['component']" routerLinkActive="active" class="ok">元件</a>
+     <a [routerLink]="['routing']"   routerLinkActive="active" class="ok">路由</a>
+     <a [routerLink]="['services']"  routerLinkActive="active" class="ok">服務</a>    
+     <a [routerLink]="['directive']" routerLinkActive="active" class="ok">指令(Directive)</a>         
+     <a [routerLink]="['pipes']"     routerLinkActive="active" class="ok">管道</a>    
+     <a [routerLink]="['forms']"     routerLinkActive="active" class="ok">表單</a>           
+ <!--------------------------------------------------------------------------------->
+     <a [routerLink]="'weblink'"     routerLinkActive="active" class="ok">網路連結</a>
+ <!--------------------------------------------------------------------------------->
+     <a (click)="layout=1">AdminLTE</a>
+     <a (click)="layout=2">客製風格</a>
+     
+ </nav>
+ 
+ <router-outlet></router-outlet>

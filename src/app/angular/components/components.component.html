@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="left">
+        <ul>
+            <a [routerLink]="['stackblitz']" routerLinkActive="active"><li>stackblitz</li></a> 
+            <a [routerLink]="['route']" routerLinkActive="active"><li>路由</li></a> 
+            <a [routerLink]="['other']" routerLinkActive="active"><li>其他</li></a> 
+            <a href="https://www.youtube.com/watch?v=aN7zFs_AT8s&list=PLqivELodHt3hxeuLX8PYaI8u1GcDaBoJo&index=4"
+              target="_blank">金魚都能懂的網頁切版 /codepen / picsum.photos</a>
+        </ul>
+    </div>
+
+    <div class="content">
+       <router-outlet></router-outlet>
+    </div>
+</div>

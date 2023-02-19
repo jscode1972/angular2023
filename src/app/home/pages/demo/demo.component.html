@@ -1,0 +1,15 @@
+<button class="w2ui-btn" (click)="show()">Popup with buttons and event listeners</button>
+
+<app-w2ui-dialog [(popup)]="popup">
+    <ng-container form-title>標題1</ng-container>
+    
+    <ng-container>
+        沒指定 {{popup}}
+
+    </ng-container>
+    
+    <ng-container form-button>
+        <button class="w2ui-btn w2ui-eaction" (click)="onSave()">Ok</button>
+        <button class="w2ui-btn w2ui-eaction" (click)="onCancel()">Cancel</button>
+    </ng-container>
+</app-w2ui-dialog>

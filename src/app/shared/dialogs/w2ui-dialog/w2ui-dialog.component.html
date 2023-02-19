@@ -1,0 +1,29 @@
+<div id="w2ui-popup" class="w2ui-popup" [style.display]="popup?'block':'none'">
+    <span name="hidden-first" tabindex="0" style="position: absolute; top: -100px"></span>
+    <div class="w2ui-popup-title-btns">
+        <div class="w2ui-popup-button w2ui-popup-close">
+            <span class="w2ui-icon w2ui-icon-cross w2ui-eaction" data-mousedown="stop" data-click="close"></span>
+        </div>
+        <div class="w2ui-popup-button w2ui-popup-max">
+            <span class="w2ui-icon w2ui-icon-box w2ui-eaction" data-mousedown="stop" data-click="toggle"></span>
+        </div>
+    </div>
+    <div class="w2ui-popup-title" style="">
+        <ng-content select="[form-title]"></ng-content>
+    </div>
+    
+    <div class="w2ui-box" style="">
+        <div class="w2ui-popup-body  w2ui-popup-no-title w2ui-popup-no-buttons" style="">
+            <div class="w2ui-centered w2ui-msg-text">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+    
+    <div class="w2ui-popup-buttons" style="">
+        <!--button class="w2ui-btn w2ui-eaction">Ok</button-->
+        <!--button class="w2ui-btn w2ui-eaction">Cancel</button-->
+        <ng-content select="[form-button]"></ng-content>
+    </div>
+    <span name="hidden-last" tabindex="0" style="position: absolute; top: -100px"></span>
+</div>

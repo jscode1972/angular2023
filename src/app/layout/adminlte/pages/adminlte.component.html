@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper" style="min-height: 100vh;">
+        <!--<router-outlet></router-outlet>-->
+        <app-content>
+            <ng-container title>測試頁</ng-container>
+            <ng-container outlet>
+                <router-outlet></router-outlet>
+            </ng-container >
+        </app-content>
+    </div>
+</div>

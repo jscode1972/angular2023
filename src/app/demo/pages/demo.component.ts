@@ -7,19 +7,4 @@ import { Component } from '@angular/core';
 })
 export class DemoComponent {
 
-  public popup : boolean = false;
-
-  constructor() {}
-  
-  show() {
-    this.popup = true;
-  }
-  //
-  onSave() {
-    this.popup = false;
-  }
-  //
-  onCancel() {
-    this.popup = false;
-  }
 }

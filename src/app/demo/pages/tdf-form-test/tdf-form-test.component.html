@@ -1,0 +1,57 @@
+<form #form="ngForm">
+    <!--必填-->
+    <div>ID：<input type="text" name="id" #id="ngModel" ngModel required />
+      <ng-container *ngIf="id.touched">
+        <span *ngIf="id.hasError('required')">帳號為必填欄位</span>
+      </ng-container>
+    </div>
+    <!--密碼長度-->
+    <div>密碼：<input type="password" name="password" #password="ngModel" ngModel minlength="8"  />
+      <ng-container *ngIf="password.touched">
+        <span *ngIf="password.hasError('minlength')">
+          密碼最少需要 {{ password.errors?.['minlength'].requiredLength }} 字元
+        </span>
+      </ng-container>
+    </div>
+    <!--email 格式-->
+    <div>密碼：<input type="text" name="mail" #mail="ngModel" ngModel email />
+        <ng-container *ngIf="mail.touched">
+          <span *ngIf="mail.hasError('email')">帳號應符合 Email 格式</span>
+        </ng-container>
+    </div>
+    <!-- 數字 -->
+    <div> 年齡：<input type="number" name="age" #age="ngModel" [ngModel]="18"  min="18" />
+        <ng-container *ngIf="age.touched">
+          <span *ngIf="age.hasError('min')"> 最小年齡為 {{ age.errors?.['min'].min }} 歲 </span>
+        </ng-container>
+    </div>
+    <!--限英數字：-->
+    <div> 帳號：<input type="text" name="username" #username="ngModel" ngModel  pattern="[a-zA-Z]*" />
+        <ng-container *ngIf="username.touched">
+          <span *ngIf="username.hasError('pattern')">密碼只接受英文字母</span>
+        </ng-container>
+    </div>
+    <!-- 自訂驗證 DecimalValidatorDirective -->
+    <div> 單價：<input type="text" name="price"  #price="ngModel" ngModel appDecimalValidator
+               [digitLength]="2"  [scaleLength]="1" />
+        <ng-container *ngIf="price.touched">
+          <span *ngIf="price.hasError('decimal')">
+            單價應為 {{ price.errors?.['decimal'].digitLength }} 位整數位與
+            {{ price.errors?.['decimal'].scaleLength }} 位整數位的數值
+          </span>
+        </ng-container>
+    </div>
+
+    <div>
+      <button type="reset">重設</button>
+      <button type="submit">登入</button>
+    </div>
+</form>
+
+<a href="https://stackblitz.com/edit/ng-book-tdf-required" target="_blank">required</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-length" target="_blank">length</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-email" target="_blank">email</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-number" target="_blank">number</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-pattern" target="_blank">pattern</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-custom-validator" target="_blank">custom-validator</a><br/>
+  

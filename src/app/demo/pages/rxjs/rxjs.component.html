@@ -1,0 +1,9 @@
+<p>rxjs works!</p>
+<div *ngFor="let m of menus">
+    {{ m.group }}
+    <ul>
+        <li *ngFor="let i of m.items">
+           {{ i.title }}
+        </li>
+    </ul>
+</div>

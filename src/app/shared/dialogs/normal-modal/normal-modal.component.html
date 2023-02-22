@@ -1,0 +1,27 @@
+<!-- Button trigger modal -->
+<!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+     (click)="onPopup()"> Launch static backdrop modal
+</button-->
+
+<!-- Modal (id: staticBackdrop) -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{title}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+            <!-- footer -->
+            <div class="modal-footer">
+                <!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button-->
+                <!--button type="button" class="btn btn-primary">Save</button-->
+                <ng-content select="[button]"></ng-content> <!-- 我覺得需要互動才能寫入, button 還是當參數好了 -->
+            </div>
+        </div>
+    </div>
+</div>

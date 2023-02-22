@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser'
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 //
 import { SharedModule } from './shared';
 import { HomeModule } from './home';
+import { DemoModule  } from './demo/demo.module';
 import { AdminlteModule, LayoutModule } from './layout';
 import { AngularModule } from './angular'; // 獨立一塊
 
@@ -24,7 +25,7 @@ import { AngularModule } from './angular'; // 獨立一塊
     AppRoutingModule,
     //FormsModule, ReactiveFormsModule,
     //
-    SharedModule, HomeModule, 
+    SharedModule, HomeModule, DemoModule,
     AdminlteModule, LayoutModule, AngularModule,
     // material UI => BrowserAnimationsModule, 
   ],

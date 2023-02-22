@@ -1,0 +1,47 @@
+需匯入 FormsModule 模組 <br/><br/>
+<!-- ngModel https://stackblitz.com/edit/ng-book-tdf-model -->
+利用 ngModel 指令定義表單模型: <input type="text" [(ngModel)]="xyz" />
+<button typte="button" (click)="onSearch1()">查詢</button> {{ xyz | json }} <br/><br/>
+<!-- 範本參考#  https://stackblitz.com/edit/ng-book-tdf-variable  -->
+利用範本參考#變數取得表單屬性: <input type="text" #condition="ngModel" ngModel />
+<button type="button" (click)="onSearch2(condition)">查詢</button>{{ condition.value| json }}  <br/><br/>
+
+<!-- ngForm 型別 https://stackblitz.com/edit/ng-book-tdf-form -->
+ngForm 型別
+<form #form1="ngForm" (submit)="onSubmit(form1)">
+    <div>帳號：<input type="text" name="id" #id="ngModel" ngModel /></div>
+    <div>密碼：<input type="password" name="password" #password="ngModel" ngModel/></div>
+    <div>
+      <button type="reset">重設</button>
+      <button type="submit">登入</button>{{ form1.value | json }}
+    </div>
+</form> <br/><br/>
+
+<!--https://stackblitz.com/edit/ng-book-tdf-model-group -->
+<form #form2="ngForm">
+    <ng-container #user="ngModelGroup" ngModelGroup="user">
+      <div>姓名：<input type="text" name="name" ngModel /></div>
+      <div>Email：<input type="text" name="email" ngModel /> {{ form2.value | json }}</div>
+    </ng-container>
+</form><br/><br/>
+
+<!--https://stackblitz.com/edit/ng-book-form-touched  -->
+<!--https://stackblitz.com/edit/ng-book-form-dirty  -->
+<form #form3="ngForm">
+    touched / dirty / pristine
+    <div>帳號：<input type="text" name="id" #id="ngModel" ngModel /></div>
+    <div>密碼：<input type="password" name="password" #password="ngModel" ngModel /></div>
+    是否曾經點選過：{{ id.touched | json }}<br/>
+    是否從未點選過：{{ id.untouched | json }}<br/>
+    是否曾經點選過：{{ form3.touched | json }}<br/>
+    是否從未點選過：{{ form3.untouched | json }}<br/>
+    是否曾經修改過：{{ form3.dirty | json }}<br/>
+    是否從未修改過：{{ form3.pristine | json }}
+</form>
+  
+<a href="https://stackblitz.com/edit/ng-book-tdf-model" target="_blank">利用 ngModel 指令定義表單模型</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-variable" target="_blank">利用範本參考(#)變數取得表單屬性</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-form" target="_blank">ngForm</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-tdf-model-group" target="_blank">ngModelGroup</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-form-touched" target="_blank">touched</a><br/>
+<a href="https://stackblitz.com/edit/ng-book-form-dirty" target="_blank">dirty</a><br/>

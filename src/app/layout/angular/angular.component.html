@@ -18,9 +18,8 @@
  <!--------------------------------------------------------------------------------->
      <a [routerLink]="'weblink'"     routerLinkActive="active" class="ok">網路連結</a>
  <!--------------------------------------------------------------------------------->
-     <a (click)="layout=1">AdminLTE</a>
-     <a (click)="layout=2">客製風格</a>
-     
+     <a style="cursor:pointer; background-color: dimgray;" (click)="layout=1">主站</a>
+     <a style="cursor:pointer; background-color: blueviolet;" (click)="layout=2">Customize</a>
  </nav>
  
  <router-outlet></router-outlet>

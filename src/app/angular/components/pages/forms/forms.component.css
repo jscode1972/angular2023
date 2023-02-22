@@ -1,0 +1,20 @@
+div.content {
+    background-color:rgb(255, 255, 255);
+    flex: auto;
+    flex-wrap: wrap;
+    display: flex; 
+    justify-content: space-evenly;
+}
+
+
+div.colx {
+    flex: none;
+    background-color:rgb(243, 246, 225);
+    width: 45%;         /* 兩排 */
+    height: 200px;
+    margin: 5px 0px;
+    border-radius: 3px;
+    box-shadow: 5px 5px 3px gray;
+    padding-left: 5px;
+    font-size: small;
+}

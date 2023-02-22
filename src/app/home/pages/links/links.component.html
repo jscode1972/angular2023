@@ -1,0 +1,17 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+</button>
+
+<button type="button" (click)="onPopup()">xxxx</button>
+
+<app-normal-modal [title]="'測試'">
+    <ng-container>
+        bra..<br/>
+        bra...
+    </ng-container>
+    <ng-container button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+    </ng-container>
+</app-normal-modal>

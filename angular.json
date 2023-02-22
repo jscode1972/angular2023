@@ -31,7 +31,8 @@
               "./node_modules/w2ui/w2ui-1.5.min.css"
             ],
             "scripts": [
-    
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
             ]
           },
           "configurations": {

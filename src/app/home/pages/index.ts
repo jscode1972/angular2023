@@ -1,4 +1,3 @@
 export * from './home/home.component';
-export * from './about/about.component';
-export * from './contact/contact.component';
-export * from './demo/demo.component';
+export * from './links/links.component';
+export * from './todo/todo.component';

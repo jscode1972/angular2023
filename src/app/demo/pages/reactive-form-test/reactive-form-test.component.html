@@ -1,0 +1,12 @@
+查詢條件：<input type="text" [formControl]="condition" />
+<button typte="button" (click)="onSearch()">查詢</button> {{condition.value|json}}
+
+<div [formGroup]="form">
+    <div>帳號：<input type="text" formControlName="id" /></div>
+    <div>密碼：<input type="password" formControlName="password" /></div>
+    {{ form.value | json }}
+</div>
+
+
+FormArray <br/><br/>
+FormBuilder<br/><br/>

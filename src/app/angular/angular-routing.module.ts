@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ComponentsComponent, StackblitzComponent, TempComponent } from './components';
+import { ComponentsComponent, StackblitzComponent, FormsComponent, TempComponent } from './components';
 import { ServicesComponent } from './services';
 import { PipesComponent } from './pipes';
 
@@ -11,6 +11,7 @@ const routes: Routes = [
     component: ComponentsComponent ,
     children: [
       { path: 'stackblitz', component: StackblitzComponent }, 
+      { path: 'forms', component: FormsComponent }, 
       { path: 'temp', component: TempComponent }, 
       //{ path: '', redirectTo: 'stackblitz', pathMatch: 'full' },  
     ]

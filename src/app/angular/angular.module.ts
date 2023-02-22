@@ -5,12 +5,14 @@ import { ComponentsComponent, StackblitzComponent, TempComponent } from './compo
 import { ServicesComponent } from './services';
 import { SharedModule } from 'src/app/shared';
 import { PipesComponent } from './pipes/pipes.component';
+import { FormsComponent } from './components/pages/forms/forms.component';
 
 @NgModule({
   declarations: [
     ComponentsComponent, StackblitzComponent, TempComponent,
     ServicesComponent,
-    PipesComponent
+    PipesComponent,
+    FormsComponent
   ],
   imports: [
     CommonModule,

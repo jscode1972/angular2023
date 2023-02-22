@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { W2uiDialogComponent } from './dialogs';
+import { W2uiDialogComponent, NormalModalComponent } from './dialogs';
 import { ShadowButtonComponent } from './buttons';
-import { MultiColumnComponent } from './cards/multi-column/multi-column.component';
+import { MultiColumnComponent } from './cards';
 //import { RouterModule } from '@angular/router'; // reuterLink 必須
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +11,8 @@ import { MultiColumnComponent } from './cards/multi-column/multi-column.componen
   declarations: [
     W2uiDialogComponent,
     ShadowButtonComponent,
-    MultiColumnComponent
+    MultiColumnComponent,
+    NormalModalComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { MultiColumnComponent } from './cards/multi-column/multi-column.componen
   exports: [
     W2uiDialogComponent,
     ShadowButtonComponent,
-    MultiColumnComponent
+    MultiColumnComponent,
+    NormalModalComponent
   ]
 })
 export class SharedModule { }

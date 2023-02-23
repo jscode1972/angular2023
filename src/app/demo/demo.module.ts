@@ -8,6 +8,7 @@ import { DemoComponent, RxjsComponent, W2uiComponent } from './pages';
 
 import { ReactFormModule } from './react-form';
 import { TdfPortalModule } from './tdf-form';
+import { ModalDemoModule } from './modal-demo';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TdfPortalModule } from './tdf-form';
     CommonModule,
     DemoRoutingModule,
     RouterModule, BrowserModule, FormsModule, ReactiveFormsModule,
-    ReactFormModule, TdfPortalModule
+    //
+    ReactFormModule, TdfPortalModule, ModalDemoModule
   ]
 })
 export class DemoModule { }

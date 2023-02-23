@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-declare var jquery:any; // 這邊用 var 
-declare let $:any; // 當然 let 也可以
+declare let $ : any;
 
 @Component({
-  selector: 'app-links',
-  templateUrl: './links.component.html',
-  styleUrls: ['./links.component.css']
+  selector: 'app-bootstrap-demo',
+  templateUrl: './bootstrap-demo.component.html',
+  styleUrls: ['./bootstrap-demo.component.css']
 })
-export class LinksComponent {
-
+export class BootstrapDemoComponent {
   onPopup() {
     //$("#xx").text('xxxxx');
     $("#staticBackdrop").modal('show');

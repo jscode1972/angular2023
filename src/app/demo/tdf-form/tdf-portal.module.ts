@@ -12,6 +12,7 @@ import { TdfPortalComponent, TdfModelComponent, TdfVariableComponent, TdfFormCom
 @NgModule({
   declarations: [
     TdfPortalComponent,
+    //
     TdfModelComponent,
     TdfVariableComponent,
     TdfFormComponent,

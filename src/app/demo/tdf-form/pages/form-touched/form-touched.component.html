@@ -1,0 +1,21 @@
+<form #form="ngForm">
+    <div>
+      帳號：<input type="text" name="id" #id="ngModel" ngModel /> <br/>
+      密碼：<input type="password" name="password" #password="ngModel" ngModel />
+    </div>
+    <div>
+      <button type="reset">重設</button>
+      <button type="submit">登入</button>
+    </div>
+  </form>
+  <hr />
+  <h6>帳號狀態</h6>
+  <pre>
+    是否曾經點選過：{{ id.touched | json }}
+    是否從未點選過：{{ id.untouched | json }}</pre>
+  <hr />
+  <h6>表單狀態</h6>
+  <pre>
+    是否曾經點選過：{{ form.touched | json }}
+    是否從未點選過：{{ form.untouched | json }}</pre>
+  

@@ -1,0 +1,29 @@
+p {
+    font-family: Lato;
+  }
+  
+  form {
+    padding-left: 20px;
+  }
+  
+  div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  form.ng-pristine {
+    border: solid 1px blue;
+  }
+  
+  form.ng-dirty {
+    border: solid 1px red;
+  }
+  
+  input.ng-pristine {
+    border: solid 2px blueviolet;
+  }
+  
+  input.ng-dirty {
+    border: solid 2px coral;
+  }
+  

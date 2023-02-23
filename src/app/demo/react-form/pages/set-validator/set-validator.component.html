@@ -1,0 +1,19 @@
+表單狀態有三種 => disabled(停用), valid/invalid, padding(非同步驗證進行中) <br/>
+設定驗證 setValidators(), addValidators(), removeValidators(), clearValidators(), hasValidators() <br/>
+最後都要呼叫 updateValueAndValidity()
+<div [formGroup]="form">
+    <div>工作編號：{{ taskSn.value }}</div>
+    <div>
+      工作狀態：
+      <select formControlName="Status">
+        <option value="None">待安排</option>
+        <option value="Doing">進行中</option>
+        <option value="Finish">已完成</option>
+      </select>
+    </div>
+    <div>
+      完成日期：<input type="text" formControlName="FinishDate" />
+      <span *ngIf="finishDate.hasError('required')">完成日期為必填欄位</span>
+    </div>
+  </div>
+  

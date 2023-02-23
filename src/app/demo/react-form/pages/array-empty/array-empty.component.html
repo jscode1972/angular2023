@@ -1,0 +1,14 @@
+自訂同步驗證實作方法會『傳入要驗證的表單控制項』, 並回傳 ValidationErrors 或 null<br/>
+來表示是否通過驗證,<br/>
+<p style="color:red">此範例有錯 2023/02/23 </p>
+<div [formGroup]="form">
+    <div formArrayName="Tasks" *ngFor="let control of tasks.controls; let index = index">
+      <ng-container [formGroupName]="index">
+        <input type="text" placeholder="主旨" formControlName="Subject" />
+        <input type="text" placeholder="內容" formControlName="Content" />
+      </ng-container>
+    </div>
+    <span *ngIf="tasks.hasError('cannotEmpty')">至少需要一筆工作事項</span>
+  </div>
+  <pre>{{ tasks.errors | json }}</pre>
+  

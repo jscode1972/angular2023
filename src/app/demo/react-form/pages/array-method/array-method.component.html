@@ -1,0 +1,16 @@
+<button type="button" (click)="onSetValue()">Set</button>
+<button type="button" (click)="onAdd()">Add</button>
+<button type="button" (click)="onClear()">Clear</button>
+
+<div class="form" [formGroup]="form">
+  <div formArrayName="tasks" *ngFor="let control of tasks.controls; let index = index">
+    <ng-container [formGroupName]="index">
+      <div>工作事項：<input type="text" formControlName="subject" /> 
+           工作內容：<input type="text" formControlName="content" />
+           <button type="button" (click)="onRemove(index)">Remove</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<pre>{{ tasks.value | json }}</pre>

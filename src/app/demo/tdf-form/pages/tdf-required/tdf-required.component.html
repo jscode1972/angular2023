@@ -1,0 +1,63 @@
+必填欄位: required <br/>
+最小長度: minlength <br/>
+郵箱格式: email
+
+<form #form="ngForm">
+    <div>
+      名字：<input type="text" name="name" #name="ngModel" placeholder="名字必填" ngModel required />
+      <ng-container *ngIf="name.touched">
+        <span *ngIf="name.hasError('required')">名字為必填欄位</span>
+      </ng-container>
+    </div>
+    <!--限英數字：-->
+    <div> 
+      帳號：<input type="text" name="username" #username="ngModel" placeholder="只接受英文字母(正規表示)"  ngModel  pattern="[a-zA-Z]*" />
+      <ng-container *ngIf="username.touched">
+        <span *ngIf="username.hasError('pattern')">帳號只接受英文字母</span>
+      </ng-container>
+    </div>
+    <!--密碼長度-->
+    <div>
+      密碼：<input type="password" name="pass" #pass="ngModel" placeholder="密碼需要 8 字元" ngModel minlength="8" />
+      <ng-container *ngIf="pass.touched">
+        <span *ngIf="pass.hasError('minlength')">
+          密碼最少需要 {{ pass.errors?.['minlength'].requiredLength }} 字元
+        </span>
+      </ng-container>
+    </div>
+    <!-- 年齡數字 -->
+    <div> 年齡：<input type="number" name="age" #age="ngModel" [ngModel]="18"  placeholder="最小年齡"  min="18" />
+        <ng-container *ngIf="age.touched">
+          <span *ngIf="age.hasError('min')"> 最小年齡為 {{ age.errors?.['min'].min }} 歲 </span>
+        </ng-container>
+    </div>
+     <!-- 信箱 -->
+    <div>
+      信箱：<input type="text" name="mail" #mail="ngModel" placeholder="信箱格式" ngModel email />
+      <ng-container *ngIf="mail.touched">
+        <span *ngIf="mail.hasError('email')">信箱應符合 Email 格式</span>
+      </ng-container>
+    </div>
+    <!-- 自訂驗證 DecimalValidatorDirective -->
+    <div> 單價：<input type="text" name="price"  #price="ngModel" placeholder="自訂驗證" ngModel appDecimalValidator
+      [digitLength]="2"  [scaleLength]="1" />
+      <ng-container *ngIf="price.touched">
+        <span *ngIf="price.hasError('decimal')">
+          單價應為 {{ price.errors?.['decimal'].digitLength }} 位整數位與
+          {{ price.errors?.['decimal'].scaleLength }} 位整數位的數值
+        </span>
+      </ng-container>
+    </div>
+
+    <div>
+      <button type="reset">重設</button>
+      <button type="submit">登入</button>
+    </div>
+  </form>
+
+  <pre>
+    {{ name.errors | json }}
+    {{ pass.errors | json }}
+    {{ mail.errors | json }}
+  </pre>
+  

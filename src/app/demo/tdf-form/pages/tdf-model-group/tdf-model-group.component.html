@@ -1,0 +1,10 @@
+ngForm => ngModelGroup => ngModel (巢狀)
+
+<form #form="ngForm">
+    <ng-container #user="ngModelGroup" ngModelGroup="user">
+      <div>姓名：<input type="text" name="name" ngModel /></div>
+      <div>Email：<input type="text" name="email" ngModel /></div>
+    </ng-container>
+  </form>
+  <pre>{{ form.value | json }}</pre>
+  

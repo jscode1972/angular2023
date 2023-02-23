@@ -1,0 +1,29 @@
+p {
+    font-family: Lato;
+  }
+  
+  form {
+    padding-left: 20px;
+  }
+  
+  div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  form.ng-untouched {
+    border: solid 1px blue;
+  }
+  
+  form.ng-touched {
+    border: solid 1px red;
+  }
+  
+  input.ng-untouched {
+    border: solid 2px blueviolet;
+  }
+  
+  input.ng-touched {
+    border: solid 2px coral;
+  }
+  

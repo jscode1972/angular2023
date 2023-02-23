@@ -1,0 +1,23 @@
+p {
+    font-family: Lato;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  
+  div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border: solid 1px red;
+  }
+  
+  span {
+    color: red;
+    margin-left: 15px;
+  }
+
+  

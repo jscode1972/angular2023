@@ -1,0 +1,16 @@
+p {
+    font-family: Lato;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  
+  div.form {
+    padding-left: 20px;
+  }
+  
+  div.form div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }

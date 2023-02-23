@@ -1,0 +1,9 @@
+<div>
+    單價：<input type="text" [formControl]="formControl" />
+    <span *ngIf="formControl.hasError('decimal')">
+      單價應為 {{ formControl.errors?.['decimal'].digitLength }} 位整數位與
+      {{ formControl.errors?.['decimal'].scaleLength }} 位整數位的數值
+    </span>
+</div>
+
+  

@@ -1,0 +1,12 @@
+<div [formGroup]="form">
+    <div>工作事項：<input type="text" formControlName="subject" /></div>
+    <div>工作內容：<input type="text" formControlName="content" /></div>
+    <div>
+      <button type="button" (click)="onReset()">Reset</button>
+      <button type="button" (click)="onSetValue()">Set Value</button>
+      <button type="button" (click)="onPatchValue()">Patch Value</button>
+    </div>
+  </div>
+  <pre>{{ form.value | json }}</pre>
+  <pre>{{ form.dirty | json }}</pre>
+  

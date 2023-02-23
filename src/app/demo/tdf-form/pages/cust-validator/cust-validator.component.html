@@ -1,0 +1,22 @@
+DecimalValidatorDirective
+
+<form #form="ngForm">
+    <div>
+      單價：<input
+        type="text"
+        name="price"
+        #price="ngModel"
+        ngModel
+        appDecimalValidator
+        [digitLength]="2"
+        [scaleLength]="1"
+      />
+      <ng-container *ngIf="price.touched">
+        <span *ngIf="price.hasError('decimal')">
+          單價應為 {{ price.errors?.['decimal'].digitLength }} 位整數位與
+          {{ price.errors?.['decimal'].scaleLength }} 位整數位的數值
+        </span>
+      </ng-container>
+    </div>
+  </form>
+  

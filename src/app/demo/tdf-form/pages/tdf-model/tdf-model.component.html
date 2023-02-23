@@ -1,0 +1,7 @@
+使用 ngModel (單值)
+<hr/>
+
+查詢條件：<input type="text" [(ngModel)]="condition" />
+<button typte="button" (click)="onSearch()">查詢</button>
+<hr />
+<pre>查詢條件：{{ condition | json }}</pre>

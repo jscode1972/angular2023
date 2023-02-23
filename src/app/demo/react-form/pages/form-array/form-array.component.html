@@ -1,0 +1,10 @@
+<div [formGroup]="form">
+    <div formArrayName="Tasks" *ngFor="let control of tasks.controls; let index = index">
+      <ng-container [formGroupName]="index">
+        <input type="text" placeholder="主旨" formControlName="Subject" />
+        <input type="text" placeholder="內容" formControlName="Content" />
+      </ng-container>
+    </div>
+  </div>
+  
+  <pre>{{ form.value | json }}</pre>

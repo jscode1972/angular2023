@@ -1,0 +1,14 @@
+ngForm => ngModel (多值)
+
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <div>帳號：<input type="text" name="id" #id="ngModel" ngModel /></div>
+    <div>
+      密碼：<input type="password" name="password" #password="ngModel" ngModel />
+    </div>
+    <div>
+      <button type="reset">重設</button>
+      <button type="submit">登入</button>
+    </div>
+  </form>
+  <pre>{{ form.value | json }}</pre>
+  

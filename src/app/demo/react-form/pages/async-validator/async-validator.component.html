@@ -1,0 +1,17 @@
+<p style="color:red">此範例無作用</p>
+<div [formGroup]="form">
+    <div>
+      帳號：<input type="text" formControlName="id" />
+      <ng-container *ngIf="id.touched">
+        <span *ngIf="id.hasError('shouldBeExists')">帳號不存在</span>
+      </ng-container>
+    </div>
+    <div>密碼：<input type="password" formControlName="password" /></div>
+    <div>
+      <button type="button">重設</button>
+      <button type="button">登入</button>
+    </div>
+  </div>
+  <pre>{{ form.value | json }}</pre>
+
+  

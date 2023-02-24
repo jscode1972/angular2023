@@ -4,16 +4,13 @@
 </button-->
 
 <!-- Modal (id: staticBackdrop) -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog {{modalSize}}  modal-dialog-centered">
         <div class="modal-content">
             <!-- header -->
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">{{title}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- body -->
             <div class="modal-body">
@@ -21,8 +18,8 @@
             </div>
             <!-- footer -->
             <div class="modal-footer">
-                <!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button-->
-                <!--button type="button" class="btn btn-primary">Save</button-->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCancel()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button>
                 <ng-content select="[button]"></ng-content> <!-- 我覺得需要互動才能寫入, button 還是當參數好了 -->
             </div>
         </div>

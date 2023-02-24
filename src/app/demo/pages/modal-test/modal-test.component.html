@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="onAdd()">
+  新增資料
+</button>
+<button type="button" class="btn btn-secondary" (click)="onEdit($event)">修改資料</button>
+
+
+<!-- popup ---------->
+<app-static-modal #modal [formGroup]="form" [title]="'標題'" modalSize="'modal-lg'" 
+  (confirmClick)="onConfirm()" (cancelClick)="onCancel()">
+     <div id="grid">
+          <!-- a -->
+          <div style="grid-area: a;">
+               <label for="eid">工號</label>
+               <input type="text" id="eid" name="eid" formControlName="eid" placeholder="請輸入工號" value="">
+          </div>
+          <!-- b -->
+          <div style="grid-area: b;">
+               <label for="acc">帳號</label>
+               <input type="text" id="acc" name="acc" formControlName="acc" placeholder="請輸入帳號" value="">
+          </div>
+          <!-- a -->
+          <div style="grid-area: c;">
+               <label for="name">姓名</label>
+               <input type="text" id="name" name="name" formControlName="name" placeholder="請輸入姓名" value="">
+          </div>
+          <!-- d -->
+          <div style="grid-area: d;">
+               <label for="age">年齡</label>
+               <input type="number" id="age" name="age" formControlName="age" placeholder="請輸入年齡" value="">
+          </div>
+          <!-- e -->
+          <div style="grid-area: e;">
+               <label for="sex">性別</label>
+               <input type="text" id="sex" name="sex" formControlName="sex" placeholder="請輸入性別" value="">
+          </div>
+     </div>
+</app-static-modal>

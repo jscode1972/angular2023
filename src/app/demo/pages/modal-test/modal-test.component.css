@@ -1,0 +1,22 @@
+div#grid {
+  display: grid;
+  width: 100%;
+  background-color: rgb(192, 206, 202);
+  grid-template-areas: 
+    'a  b'
+    'c  c'
+    'd  e';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+label {
+    display: inline-block;
+    width: 50px;
+}
+
+input {
+  width: calc(100% - 70px);
+  border-radius: 2px;
+  background: hwb(85 80% 6%);
+}

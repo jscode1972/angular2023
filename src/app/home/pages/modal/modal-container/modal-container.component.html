@@ -1,0 +1,17 @@
+<button (click)="popup()">popup</button>
+
+<app-modal-popup #modal  modalTitle="測試" modalSize="modal-lg">
+    
+    <app-modal-input></app-modal-input>
+
+    <ng-container footer>
+        <button class="btn-grad" (click)="onSave()">Save</button>
+        <button class="btn-grad btn-exit" (click)="onExit()">Exit</button>
+    </ng-container>
+
+    <ng-container confirm>
+       確定存檔?
+    </ng-container>
+
+</app-modal-popup>
+

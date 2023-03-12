@@ -10,7 +10,7 @@
   (confirmClick)="onConfirm()" (cancelClick)="onCancel()">
      <div id="grid">
           <!-- a -->
-          <div style="grid-area: a;">
+          <div style="grid-area: a;  background-color: rgb(219, 208, 181);">
                <label for="eid">工號</label>
                <input type="text" id="eid" name="eid" formControlName="eid" placeholder="請輸入工號" value="">
           </div>
@@ -19,7 +19,7 @@
                <label for="acc">帳號</label>
                <input type="text" id="acc" name="acc" formControlName="acc" placeholder="請輸入帳號" value="">
           </div>
-          <!-- a -->
+          <!-- c -->
           <div style="grid-area: c;">
                <label for="name">姓名</label>
                <input type="text" id="name" name="name" formControlName="name" placeholder="請輸入姓名" value="">
@@ -34,5 +34,6 @@
                <label for="sex">性別</label>
                <input type="text" id="sex" name="sex" formControlName="sex" placeholder="請輸入性別" value="">
           </div>
+
      </div>
 </app-static-modal>

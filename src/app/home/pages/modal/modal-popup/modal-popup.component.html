@@ -1,0 +1,57 @@
+<!-- Button trigger modal -->
+<!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+     (click)="onPopup()"> Launch static backdrop modal
+</button-->
+
+<!-- Modal (id: staticBackdrop) -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog {{modalSize}} modal-dialog-centered">
+        <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}} </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+                <ng-content> 
+                    <!-- 主要內容 -->
+                </ng-content>
+            </div>
+            <!-- footer -->
+            <div class="modal-footer">
+                <!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCancel()">Close</button-->
+                <!--button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button-->
+                <ng-content select="[footer]">
+                    <!-- 我覺得需要互動才能寫入, button 還是當參數好了, 
+                         改成動態產生!!! -->
+                </ng-content> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 再次確認 -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Confirm</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <!-- body -->
+        <div class="modal-body">
+            <ng-content select="[confirm]"> 
+                <!-- 主要內容 -->
+            </ng-content>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="modal-btn-ok">Confirm</button>
+          <button type="button" class="btn btn-primary" id="modal-btn-no">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--div class="alert" role="alert" id="result"></div-->

@@ -27,6 +27,7 @@ export class ModalTestComponent {
   }
 
   onEdit(emp : any) {  
+    
     this.form.patchValue( { eid: '001', age: 18, sex: '男' } );
     this.modal.show();
   }

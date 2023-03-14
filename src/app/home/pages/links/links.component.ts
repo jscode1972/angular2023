@@ -9,13 +9,4 @@ declare let $:any; // 當然 let 也可以
 })
 export class LinksComponent {
 
-  onPopup() {
-    //$("#xx").text('xxxxx');
-    $("#staticBackdrop").modal('show');
-  }
-
-  onSave() {
-    $("#staticBackdrop").modal('hide');
-    alert('ok');
-  }
 }

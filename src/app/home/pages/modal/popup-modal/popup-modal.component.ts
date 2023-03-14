@@ -9,13 +9,15 @@ declare var $ : any;
 })
 export class PopupModalComponent implements OnInit {
 
-  @Input() title !: string;
+  //@Input() 
+  title : string = "";
 
   constructor(@Attribute('modalSize') public modalSize : string ) {}
 
   ngOnInit() { }
 
-  show() {
+  show(title : string) {
+    this.title = title;
     $("#staticBackdrop").modal('show');
   }
 

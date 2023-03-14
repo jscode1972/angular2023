@@ -1,4 +1,3 @@
-<!-- Button trigger modal -->
 <!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
      (click)="onPopup()"> Launch static backdrop modal
 </button-->
@@ -15,16 +14,15 @@
             <!-- body -->
             <div class="modal-body">
                 <ng-content> 
-                    <!-- 主要內容 -->
+                    <!-- 主要內容 UI -->
                 </ng-content>
             </div>
             <!-- footer -->
             <div class="modal-footer">
-                <!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCancel()">Close</button-->
-                <!--button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button-->
                 <ng-content select="[footer]">
-                    <!-- 我覺得需要互動才能寫入, button 還是當參數好了, 
-                         改成動態產生!!! -->
+                    <!--button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCancel()">Close</button-->
+                    <!--button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button-->
+                    <!-- 我覺得需要互動才能寫入, button 還是當參數好了, 改成動態產生!!! -->
                 </ng-content> 
             </div>
         </div>

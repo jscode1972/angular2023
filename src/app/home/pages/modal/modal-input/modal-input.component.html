@@ -1,25 +1,24 @@
-<form [formGroup]="frm" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="frm"><!-- (ngSubmit)="onSubmit()" novalidate-->
 <div id="grid" style="float: left; width:100%;">
    
-      <div style="grid-area: pid; ">
-        <label for="pid">編號</label>
-        <input type="text" id="pid" name="pid" formControlName="pid">
-      </div>
+    <div style="grid-area: pid; ">
+      <label for="pid">編號</label>
+      <input type="text" id="pid" name="pid" formControlName="pid">
+    </div>
 
-      <div style="grid-area: sex; ">
-        <label for="sex">性別</label>
-        <input type="text" id="sex" name="sex" formControlName="sex">
-      </div>
-   
-      <div style="grid-area: name; ">
-        <label for="name">姓名</label>
-        <input type="text" id="name" name="name" formControlName="name">
-      </div>
-   
-      <div style="grid-area: age; ">
-        <label for="age">年齡 </label>
-        <input type="text" id="age" name="age" formControlName="age">
-      </div>
+    <div style="grid-area: sex; ">
+      <label for="sex">性別</label>
+      <input type="text" id="sex" name="sex" formControlName="sex">
+    </div>
+  
+    <div style="grid-area: name; ">
+      <label for="name">姓名</label>
+      <input type="text" id="name" name="name" formControlName="name">
+    </div>
+  
+    <div style="grid-area: age; ">
+      <label for="age">年齡 </label>
+      <input type="text" id="age" name="age" formControlName="age">
+    </div>
 </div>
-<button type="submit">送出</button>
 </form>

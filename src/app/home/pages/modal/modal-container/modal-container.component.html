@@ -20,9 +20,10 @@
     </tr>
 </table>
 
-<app-popup-modal #modal modalSize="modal-lg" [title]="modalTitle">
+<app-popup-modal #modal modalSize="modal-lg">
+    
     <!-- input UI -->
-    <app-modal-input #input ></app-modal-input>
+    <app-modal-input #input [modal]="modal" [confirm]="confirm"></app-modal-input>
     
     <!-- input footer -->
     <ng-container footer>
@@ -31,8 +32,7 @@
     </ng-container>
 </app-popup-modal>
 
-<app-popup-confirm #confirm [title]="modalTitle">
-    {{modalContent}}
+<app-popup-confirm #confirm>
     <!-- confirm footer -->
     <ng-container footer>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

@@ -29,37 +29,37 @@ export class UserService {
     return of(user);
   }
 
-  addUser(u : User) : Observable<string> {
+  addUser(u : User) : Observable<boolean> {
     let pid = this.users.length+1+"";
     pid = pid.padStart(3, "0");
     u.pid = pid;
     this.users.push(u);
-    return of(pid);
+    return of(pid != "");
   }
 
-  updUser(id : string, u : User) : Observable<string> {
-    let msg : string = "fail";
+  updUser(id : string, u : User) : Observable<boolean> {
+    let result : boolean = false;
     this.users.forEach( (item, index) => {
       //if(item === u) { 
       if(item.pid === id) { 
-        msg = "Updeted successfully.";
+        result = true; // msg = "Updated successfully.";
         item.name = u.name;
         item.sex = u.sex;
         item.age = u.age;
       }
     });
-    return of(msg);
+    return of(result);
   }
 
-  delUser(id : string) : Observable<string> {
-    let msg : string = "fail";
+  delUser(id : string) : Observable<boolean> {
+    let result : boolean = false;
     this.users.forEach( (item, index) => {
       //if(item === u) { 
       if(item.pid === id) { 
-        msg = "Deleted successfully.";
+        result = true; // msg = "Deleted successfully.";
         this.users.splice(index,1);
       }
     });
-    return of(msg);
+    return of(result);
   }
 }

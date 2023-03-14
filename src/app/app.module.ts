@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 用到再加
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +23,7 @@ import { AngularModule } from './angular'; // 獨立一塊
     BrowserModule, 
     HttpClientModule, // 若要使用 http 連線
     AppRoutingModule,
-    //FormsModule, ReactiveFormsModule,
+    //FormsModule, ReactiveFormsModule, // 用到再加
     //
     SharedModule, HomeModule, DemoModule,
     AdminlteModule, LayoutModule, AngularModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-
-import { Menu } from '../models';
+import { Menu } from 'src/app/models';
 import { Logger, BackendService, MessageService } from '../services';
+
 @Injectable({
   providedIn: 'root'
 })

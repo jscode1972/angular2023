@@ -1,4 +1,4 @@
-import { Menu } from "../models/menu.model";
+import { Menu } from "..";
 
 export const MOCKS : Menu[] = [
     { name: '<Angular>', active : true,  items : [

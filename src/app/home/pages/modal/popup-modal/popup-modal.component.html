@@ -9,7 +9,7 @@
         <div class="modal-content">
             <!-- header -->
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}} </h5>
+                <h5 class="modal-title" id="staticBackdropLabel">{{title}} </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- body -->
@@ -30,28 +30,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- 再次確認 -->
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="myModalLabel">Confirm</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <!-- body -->
-        <div class="modal-body">
-            <ng-content select="[confirm]"> 
-                <!-- 主要內容 -->
-            </ng-content>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="modal-btn-ok">Confirm</button>
-          <button type="button" class="btn btn-primary" id="modal-btn-no">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!--div class="alert" role="alert" id="result"></div-->

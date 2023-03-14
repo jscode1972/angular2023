@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { from } from 'rxjs';
-import { Menu, MenuService, MessageService } from 'src/app/core';
+import { Menu } from 'src/app/models';
+import { MenuService, MessageService } from 'src/app/core';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 //
-import { Menu } from '../models'; // 到底怎麼分層好呢?
-import { MOCKS } from '../mocks'; // 到底怎麼分層好呢?
+import { Menu } from 'src/app/models'; // 到底怎麼分層好呢?
+import { MOCKS } from '../../../models/mocks'; // 到底怎麼分層好呢?
 
 @Injectable({
   providedIn: 'root'

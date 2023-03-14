@@ -1,0 +1,18 @@
+div#grid {
+    display: grid;
+    width: 100%;
+    background-color: rgb(192, 206, 202);
+    grid-template-areas: 
+      'pid   sex'
+      'name  age';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+label {
+    width: 100px;
+}
+  
+input {
+    width: calc(100% - 100px);
+}

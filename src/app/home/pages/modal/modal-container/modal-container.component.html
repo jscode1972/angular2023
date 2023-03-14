@@ -1,17 +1,43 @@
-<button (click)="popup()">popup</button>
+<button (click)="onQuery()">Query</button>
+<button (click)="onInsert()">Add</button>
 
-<app-modal-popup #modal  modalTitle="測試" modalSize="modal-lg">
+<table width="100%">
+    <tr>
+        <td>編號</td>
+        <td>姓名</td>
+        <td>性別</td>
+        <td>年紀</td>
+        <td>修改</td>
+        <td>刪除</td>
+    </tr>
+    <tr *ngFor="let u of users">
+        <td>{{u.pid}}</td>
+        <td>{{u.name}}</td>
+        <td>{{u.sex}}</td>
+        <td>{{u.age}}</td>
+        <td><button (click)="onUpdate(u)">Update</button></td>
+        <td><button (click)="onDelete(u)">Delete</button></td>
+    </tr>
+</table>
+
+<app-popup-modal #modal modalSize="modal-lg" [title]="modalTitle">
+    <!-- input UI -->
+    <app-modal-input #input ></app-modal-input>
     
-    <app-modal-input></app-modal-input>
-
+    <!-- input footer -->
     <ng-container footer>
-        <button class="btn-grad" (click)="onSave()">Save</button>
-        <button class="btn-grad btn-exit" (click)="onExit()">Exit</button>
+        <button class="btn-grad btn-exit" data-bs-dismiss="modal">Exit</button>
+        <button class="btn-grad" (click)="onSubmit()">Submit</button>
     </ng-container>
+</app-popup-modal>
 
-    <ng-container confirm>
-       確定存檔?
+<app-popup-confirm #confirm [title]="modalTitle">
+    {{modalContent}}
+    <!-- confirm footer -->
+    <ng-container footer>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button>
     </ng-container>
+</app-popup-confirm>
 
-</app-modal-popup>
 

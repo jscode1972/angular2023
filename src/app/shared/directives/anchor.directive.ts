@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-import { LinkType } from 'src/app/core';
+//import { LinkType } from 'src/app/core';
 
 @Directive({
   selector: '[appAnchor]'

@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
 import { SharedModule } from '../shared';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent, LinksComponent, TodoComponent, 
-         ModalContainerComponent, ModalPopupComponent, ModalInputComponent } from './pages';
+         ModalContainerComponent, ModalInputComponent,
+         PopupModalComponent, PopupConfirmComponent
+        } from './pages';
 
 @NgModule({
   declarations: [
     HomeComponent,  TodoComponent, LinksComponent,
-    ModalContainerComponent, ModalPopupComponent, ModalInputComponent 
+    ModalContainerComponent, ModalInputComponent, 
+    PopupModalComponent, PopupConfirmComponent 
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule, ReactiveFormsModule 
   ]
 })
 export class HomeModule { }

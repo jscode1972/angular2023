@@ -27,16 +27,16 @@
     
     <!-- input footer -->
     <ng-container footer>
-        <button class="btn-grad btn-exit" data-bs-dismiss="modal">Exit</button>
         <button class="btn-grad" (click)="onSubmit()">Submit</button>
+        <button class="btn-grad btn-exit" data-bs-dismiss="modal">Exit</button>
     </ng-container>
 </app-popup-modal>
 
 <app-popup-confirm #confirm>
     <!-- confirm footer -->
     <ng-container footer>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
     </ng-container>
 </app-popup-confirm>
 

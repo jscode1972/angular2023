@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { ModalStatus, User } from 'src/app/models';
+import { ModalState, User } from 'src/app/models';
 import { UserService } from 'src/app/core';
 import { ModalInputComponent, PopupModalComponent, PopupConfirmComponent } from '../..';
 
@@ -33,17 +33,17 @@ export class ModalContainerComponent implements OnInit {
   
   onInsert() {
     // 進入新增模式
-    this.input.fillForm(ModalStatus.Insert);
+    this.input.fillForm(ModalState.Insert);
   }
 
   onUpdate(u : User) {
     // 進入修改模式
-    this.input.fillForm(ModalStatus.Update, u);
+    this.input.fillForm(ModalState.Update, u);
   }
 
   onDelete(u : User) {
     // 進入刪除模式
-    this.input.fillForm(ModalStatus.Delete, u);
+    this.input.fillForm(ModalState.Delete, u);
   }
 
   onSubmit() {

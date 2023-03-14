@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // 模組要加入
 import { Observable, of } from 'rxjs';
 import { UserService } from 'src/app/core';
-import { ModalStatus, User } from 'src/app/models';
+import { ModalState, User } from 'src/app/models';
 import { PopupModalComponent, PopupConfirmComponent } from '../..';
 
 class Info {
@@ -17,7 +17,7 @@ class Info {
 })
 export class ModalInputComponent implements OnInit {
 
-  status !: ModalStatus;
+  state !: ModalState;
   orgId : string = "";
   frm !: FormGroup;
 
@@ -29,12 +29,12 @@ export class ModalInputComponent implements OnInit {
   ) {}
 
   get info() : Info {
-    switch(this.status) {
-      case ModalStatus.Insert : 
+    switch(this.state) {
+      case ModalState.Insert : 
         return { title: "新增使用者", warning: "確認新增?" };
-      case ModalStatus.Update : 
+      case ModalState.Update : 
         return { title: "編輯使用者", warning: "確認修改?" };
-      case ModalStatus.Delete : 
+      case ModalState.Delete : 
         return { title: "刪除使用者", warning: "確認刪除?" };
       default: 
         return { title: "NA", warning: "NA" };
@@ -55,9 +55,9 @@ export class ModalInputComponent implements OnInit {
     });
   }
 
-  fillForm(status : ModalStatus, u? : User) {
+  fillForm(status : ModalState, u? : User) {
     this.orgId = "";
-    this.status = status;
+    this.state = status;
     this.modal.show(this.info.title);
     //
     if (!u?.pid) {
@@ -89,12 +89,12 @@ export class ModalInputComponent implements OnInit {
 
   save() : Observable<boolean> {
     this.confirm.hide();
-    switch(this.status) {
-      case ModalStatus.Insert: 
+    switch(this.state) {
+      case ModalState.Insert: 
         return this.svc.addUser(this.frm.value);
-      case ModalStatus.Update: 
+      case ModalState.Update: 
         return this.svc.updUser(this.orgId, this.frm.value);
-      case ModalStatus.Delete: 
+      case ModalState.Delete: 
         return this.svc.delUser(this.orgId);
       default:
         return of(false);

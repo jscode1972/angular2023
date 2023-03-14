@@ -30,8 +30,9 @@ export class UserService {
   }
 
   addUser(u : User) : Observable<boolean> {
-    let pid = this.users.length+1+"";
-    pid = pid.padStart(3, "0");
+    //let pid = this.users.length+1+"";
+    let tmp = Math.floor(Math.random()*1000)+"";
+    let pid = tmp.padStart(3, "0");
     u.pid = pid;
     this.users.push(u);
     return of(pid != "");

@@ -1,4 +1,4 @@
-export enum ModalState {
+export enum InputState {
     Insert = 1,
     Update,
     Delete

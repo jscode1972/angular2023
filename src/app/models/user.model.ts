@@ -3,4 +3,6 @@ export class User {
     name !: string;
     sex !: string;
     age !: number;
+    height !: number;
+    weight !: number;
 }

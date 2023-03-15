@@ -9,15 +9,11 @@ declare var $ : any;
 })
 export class PopupConfirmComponent implements OnInit {
 
-  //@Input() 
-  warning !: string;
-
   constructor() {}
 
   ngOnInit() { }
   
-  show(warning : string) {
-    this.warning = warning;
+  show() {
     $("#mi-modal").modal('show');
   }
 

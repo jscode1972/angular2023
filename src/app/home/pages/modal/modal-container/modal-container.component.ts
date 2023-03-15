@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { ModalState, User } from 'src/app/models';
+import { InputState, User } from 'src/app/models';
 import { UserService } from 'src/app/core';
 import { ModalInputComponent, PopupModalComponent, PopupConfirmComponent } from '../..';
 
@@ -12,6 +12,7 @@ declare var $ : any;
 })
 export class ModalContainerComponent implements OnInit {
 
+  inputState : InputState = InputState.Insert;
   users !: User[];
 
   @ViewChild(ModalInputComponent) input !: ModalInputComponent;  
@@ -33,17 +34,20 @@ export class ModalContainerComponent implements OnInit {
   
   onInsert() {
     // 進入新增模式
-    this.input.fillForm(ModalState.Insert);
+    this.inputState = InputState.Insert;
+    this.input.fillForm(InputState.Insert);
   }
 
   onUpdate(u : User) {
     // 進入修改模式
-    this.input.fillForm(ModalState.Update, u);
+    this.inputState = InputState.Update;
+    this.input.fillForm(InputState.Update, u);
   }
 
   onDelete(u : User) {
     // 進入刪除模式
-    this.input.fillForm(ModalState.Delete, u);
+    this.inputState = InputState.Delete;
+    this.input.fillForm(InputState.Delete, u);
   }
 
   onSubmit() {
@@ -53,11 +57,11 @@ export class ModalContainerComponent implements OnInit {
 
   onConfirm() {
     // 送出資料
-    this.input.save()
-      .subscribe( (p : boolean) => {
+    this.input.save();
+      /*.subscribe( (p : boolean) => {
         if (p) {
           this.modal.hide();
         }
-      });
+      });*/
   }
 }

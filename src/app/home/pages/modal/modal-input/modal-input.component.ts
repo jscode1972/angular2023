@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // 模組要加入
-import { Observable, of } from 'rxjs';
+import { Observable, of, range, toArray } from 'rxjs';
 import { UserService } from 'src/app/core';
-import { ModalState, User } from 'src/app/models';
+import { InputState, User } from 'src/app/models';
 import { PopupModalComponent, PopupConfirmComponent } from '../..';
 
 class Info {
@@ -17,9 +17,10 @@ class Info {
 })
 export class ModalInputComponent implements OnInit {
 
-  state !: ModalState;
-  orgId : string = "";
+  inputState !: InputState;
+  curId : string = "";
   frm !: FormGroup;
+  nums : number[] = [];
 
   @Input() modal !: PopupModalComponent;
   @Input() confirm !: PopupConfirmComponent;
@@ -28,21 +29,15 @@ export class ModalInputComponent implements OnInit {
               private svc : UserService
   ) {}
 
-  get info() : Info {
-    switch(this.state) {
-      case ModalState.Insert : 
-        return { title: "新增使用者", warning: "確認新增?" };
-      case ModalState.Update : 
-        return { title: "編輯使用者", warning: "確認修改?" };
-      case ModalState.Delete : 
-        return { title: "刪除使用者", warning: "確認刪除?" };
-      default: 
-        return { title: "NA", warning: "NA" };
-    }
-  }
-
   ngOnInit(): void {    
     this.initForm();
+    range(140,60)
+      .pipe(toArray())
+      .subscribe((arr) => {
+        //this.nums.push(i);
+        console.log("pipe(toArray())", arr);
+        this.nums = arr;
+      });
   }
 
   initForm() {
@@ -52,25 +47,29 @@ export class ModalInputComponent implements OnInit {
       name: '',
       sex: '',
       age: 0,
+      height: <number>(0),
+      weight: <number>(0)
     });
   }
 
-  fillForm(status : ModalState, u? : User) {
-    this.orgId = "";
-    this.state = status;
-    this.modal.show(this.info.title);
+  fillForm(stats : InputState, u? : User) {
+    this.curId = "";
+    this.inputState = stats;
+    this.modal.show();
     //
     if (!u?.pid) {
       // reset
       this.frm.reset();
     } else {
-      this.orgId = u.pid;
+      this.curId = u.pid;
       this.svc.getUser(u.pid).subscribe( r => {
         this.frm.patchValue({ 
           pid: r.pid,
           name: r.name,
           sex: r.sex,
-          age: r.age 
+          age: r.age,
+          height: r.height,
+          weight: r.weight 
         });
       });
     }
@@ -81,21 +80,31 @@ export class ModalInputComponent implements OnInit {
     console.log("check-in");
     if (true) { // 確認 rule
       console.log("check-ok");
-      this.confirm.show(this.info.warning);
+      this.confirm.show();
     } else {
       console.log("check-ng");   
     }
   }
 
-  save() : Observable<boolean> {
+  save() {
     this.confirm.hide();
-    switch(this.state) {
-      case ModalState.Insert: 
+    this.commit() 
+      .subscribe( p => {
+        if (p) {
+          this.modal.hide();
+        }
+      });
+  }
+
+  commit() : Observable<boolean> {
+    // 到時候加上 api 此處 boolan => WrapResult
+    switch(this.inputState) {
+      case InputState.Insert: 
         return this.svc.addUser(this.frm.value);
-      case ModalState.Update: 
-        return this.svc.updUser(this.orgId, this.frm.value);
-      case ModalState.Delete: 
-        return this.svc.delUser(this.orgId);
+      case InputState.Update: 
+        return this.svc.updUser(this.curId, this.frm.value);
+      case InputState.Delete: 
+        return this.svc.delUser(this.curId);
       default:
         return of(false);
     }

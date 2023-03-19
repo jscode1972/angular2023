@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { InputState, User } from 'src/app/models';
 import { UserService } from 'src/app/core';
-import { ModalInputComponent, PopupModalComponent, PopupConfirmComponent } from '../..';
+import { ModalInputComponent, PopupModalComponent } from '../..';
 
 declare var $ : any;
 
@@ -12,12 +12,12 @@ declare var $ : any;
 })
 export class ModalContainerComponent implements OnInit {
 
-  inputState : InputState = InputState.Insert;
+  //inputState : InputState = InputState.Insert;
   users !: User[];
 
   @ViewChild(ModalInputComponent) input !: ModalInputComponent;  
   @ViewChild(PopupModalComponent) modal !: PopupModalComponent;
-  @ViewChild(PopupConfirmComponent) confirm !: PopupConfirmComponent;
+  //@ViewChild(PopupConfirmComponent) confirm !: PopupConfirmComponent;
 
   constructor(private svc : UserService) {}
 
@@ -34,23 +34,30 @@ export class ModalContainerComponent implements OnInit {
   
   onInsert() {
     // 進入新增模式
-    this.inputState = InputState.Insert;
     this.input.fillForm(InputState.Insert);
+    this.modal.show();
   }
 
   onUpdate(u : User) {
     // 進入修改模式
-    this.inputState = InputState.Update;
     this.input.fillForm(InputState.Update, u);
+    this.modal.show();
   }
 
   onDelete(u : User) {
     // 進入刪除模式
-    this.inputState = InputState.Delete;
     this.input.fillForm(InputState.Delete, u);
+    this.modal.show();
   }
 
-  onSubmit() {
+  onCallback(succ : boolean) {
+    this.modal.hide();
+    if (succ) {
+      this.onQuery();
+    }
+  }
+
+  /*onSubmit() {
     // 進入確認模式
     this.input.check();
   }
@@ -58,10 +65,10 @@ export class ModalContainerComponent implements OnInit {
   onConfirm() {
     // 送出資料
     this.input.save();
-      /*.subscribe( (p : boolean) => {
+      .subscribe( (p : boolean) => {
         if (p) {
           this.modal.hide();
         }
-      });*/
-  }
+      });
+  }*/
 }

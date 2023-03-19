@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // 模組要加入
 import { Observable, of, range, toArray } from 'rxjs';
 import { UserService } from 'src/app/core';
 import { InputState, User } from 'src/app/models';
-import { PopupModalComponent, PopupConfirmComponent } from '../..';
+import { PopupModalComponent, PopupDialogComponent } from '../..';
 
 class Info {
   title!: string;
@@ -23,11 +23,31 @@ export class ModalInputComponent implements OnInit {
   nums : number[] = [];
 
   @Input() modal !: PopupModalComponent;
-  @Input() confirm !: PopupConfirmComponent;
+  //@Input() confirm !: PopupDialogComponent;
+  @Output() callback = new EventEmitter();
+  @ViewChild('warning') warning !: PopupDialogComponent;
+  @ViewChild('confirm') confirm !: PopupDialogComponent;
 
   constructor(private fb : FormBuilder,
               private svc : UserService
   ) {}
+
+  get header() : string {
+    switch(this.inputState) {
+      case InputState.Insert: 
+        return "新增";
+      case InputState.Update: 
+        return "修改";
+      case InputState.Delete: 
+        return "刪除";
+      default:
+        return "NA";
+    }
+  }
+
+  checkIf(s : string) : FormControl {
+    return this.frm.get(s) as FormControl;
+  }
 
   ngOnInit(): void {    
     this.initForm();
@@ -55,7 +75,6 @@ export class ModalInputComponent implements OnInit {
   fillForm(stats : InputState, u? : User) {
     this.curId = "";
     this.inputState = stats;
-    this.modal.show();
     //
     if (!u?.pid) {
       // reset
@@ -75,28 +94,7 @@ export class ModalInputComponent implements OnInit {
     }
   }
 
-  check() {
-    // 明天研究重點 03/15
-    console.log("check-in");
-    if (true) { // 確認 rule
-      console.log("check-ok");
-      this.confirm.show();
-    } else {
-      console.log("check-ng");   
-    }
-  }
-
-  save() {
-    this.confirm.hide();
-    this.commit() 
-      .subscribe( p => {
-        if (p) {
-          this.modal.hide();
-        }
-      });
-  }
-
-  commit() : Observable<boolean> {
+  saveForm() : Observable<boolean> {
     // 到時候加上 api 此處 boolan => WrapResult
     switch(this.inputState) {
       case InputState.Insert: 
@@ -109,4 +107,25 @@ export class ModalInputComponent implements OnInit {
         return of(false);
     }
   }
+
+  onSubmit() {
+    // 進入確認模式
+    if (this.frm.invalid) {
+      this.warning.show();
+      return;
+    }
+    this.confirm.show();
+  }
+
+  onConfirm() {
+    this.confirm.hide();
+    this.saveForm().subscribe((succ) => {
+      if (succ) {
+        this.callback.emit(true);
+      } else {
+        alert('fail...');
+      }
+    })
+  }
+
 }

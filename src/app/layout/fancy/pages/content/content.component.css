@@ -1,0 +1,51 @@
+.box {
+    width: 960px;
+    height: 200px;
+    background-color: darkgray;
+    border: 6px solid #eee;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end ;
+    align-items: center;
+}
+
+.item {
+    width: 150px;
+    height: 100px;
+ 
+}
+
+.item1 {
+    background-color: aqua;
+}
+
+.item2 {
+    background-color: rgb(250, 182, 100);
+}
+
+.item3 {
+    background-color: rgb(0, 128, 255);
+}
+
+.item4 {
+    background-color: rgb(197, 54, 173);
+    flex-grow: 1;
+}
+
+
+fieldset {
+    margin: 0 1em;
+    margin-bottom: 1em !important;
+    border: 2px solid rgb(45, 108, 196) !important;
+    border-radius: 5px;
+    padding: 10px !important;
+    width: 45%;
+    display: inline-block;
+}
+
+legend {
+    padding: 1px 10px !important;
+    float:none;
+    width:auto;
+}
+

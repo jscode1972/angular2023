@@ -18,7 +18,7 @@ import { UserService } from './user.service';
 export class AsyncValidatorComponent {
   readonly form = this.fb.group({
     id: this.fb.control('', {
-      asyncValidators: [this.shouldBeExists],
+      asyncValidators: [this.shouldBeExists.bind(this)], // 欲綁定 bind(this) 不能忘
       updateOn: 'blur',
     }),
     password: this.fb.control(''),
@@ -28,7 +28,8 @@ export class AsyncValidatorComponent {
     return this.form.get('id') as FormControl;
   }
 
-  constructor(private fb: FormBuilder, private userSerivce: UserService) {}
+  constructor(private fb: FormBuilder, 
+              private userSerivce: UserService) {}
 
   shouldBeExists( control: AbstractControl ): Observable<ValidationErrors | null> {
     if (
@@ -38,7 +39,7 @@ export class AsyncValidatorComponent {
     ) {
       return of(null);
     }
-
+    
     return this.userSerivce
       .isExists(control.value)
       .pipe(map((isExists) => (isExists ? null : { shouldBeExists: true })));

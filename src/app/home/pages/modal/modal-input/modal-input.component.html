@@ -1,5 +1,5 @@
-<form [formGroup]="frm"><!-- (ngSubmit)="onSubmit()" novalidate-->
-<div id="grid" style="float: left; width:100%;">
+<!-- (ngSubmit)="onSubmit()" novalidate-->
+<form id="grid" [formGroup]="frm" style="float: left; width:100%;" autocomplete="off">
    
     <div style="grid-area: pid; ">
       <label for="pid">編號</label>
@@ -37,5 +37,32 @@
     <div style="grid-area: json; "> {{frm.value | json }} </div>
 
     <!-- option/select 賦值 [ngValue]="age" -->
-</div>
 </form>
+
+<app-popup-dialog #warning [key]="'warning'">
+  <!-- header 不需要 -->
+  <!-- body -->
+  <ng-container>
+    <ng-container *ngIf="checkIf('pid').hasError('required')">不可空直</ng-container>
+  </ng-container>
+  <!-- confirm footer -->
+  <ng-container footer>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+  </ng-container>
+</app-popup-dialog>
+
+
+<app-popup-dialog #confirm [key]="'confirm'">
+  <!-- header 不需要 -->
+  <!-- body -->
+  <ng-container [ngSwitch]="inputState">
+    <ng-container *ngSwitchCase="1">確定新增?</ng-container>
+    <ng-container *ngSwitchCase="2">確定修改?</ng-container>
+    <ng-container *ngSwitchCase="3">確定刪除?</ng-container>
+  </ng-container>
+  <!-- confirm footer -->
+  <ng-container footer>
+      <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+  </ng-container>
+</app-popup-dialog>

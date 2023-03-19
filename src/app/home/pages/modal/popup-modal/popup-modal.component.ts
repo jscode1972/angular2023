@@ -9,6 +9,7 @@ declare var $ : any;
 })
 export class PopupModalComponent implements OnInit {
 
+  @Input('title') title !: string;
   constructor(@Attribute('modalSize') public modalSize : string ) {}
 
   ngOnInit() { }

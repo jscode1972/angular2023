@@ -1,12 +1,12 @@
 建立表單陣列, 為了更容易操作加入 getter <br/>
 要注意的是, FormGroup 的 get 回傳基礎型別 AbstractControl (FormControl, FormGroup, FormArray) <br/>
 必須轉型 as FormArray
-<p style="color:red">沒有綁定到物件?</p>
+<p style="color:blue">沒有綁定到物件? (已解決) => [formGroupName]="index" 別忘了</p>
 <div [formGroup]="form">
     <input type="text" formControlName="User" placeholder="工作人員" />
     <div>
       <div formArrayName="Tasks" *ngFor="let control of tasks.controls; let index = index">
-        <ng-container>
+        <ng-container [formGroupName]="index"> <!--[formGroupName]="index" 別忘了 -->
           <input type="text" placeholder="工作事項" formControlName="Subject" /> <!-- 沒有綁定到物件? -->
           <input type="text" placeholder="工作內容" formControlName="Content" /> <!-- 沒有綁定到物件? -->
         </ng-container>
@@ -14,5 +14,5 @@
     </div>
   </div>
 
-  <pre>{{ form.value | json}}</pre>
+  json: {{ form.value | json}}
 

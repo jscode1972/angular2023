@@ -1,17 +1,18 @@
-<p style="color:red">此範例無作用</p>
+<button type="button">重設</button>
+<button type="button">登入</button>
+<span style="color:red">此範例無作用 </span><span style="color:blue">=> (已訂正 2023/03/17)</span>
+
 <div [formGroup]="form">
     <div>
-      帳號：<input type="text" formControlName="id" />
+      帳號：<input type="text" formControlName="id" placeholder="請輸入 userA" />
       <ng-container *ngIf="id.touched">
         <span *ngIf="id.hasError('shouldBeExists')">帳號不存在</span>
       </ng-container>
     </div>
     <div>密碼：<input type="password" formControlName="password" /></div>
-    <div>
-      <button type="button">重設</button>
-      <button type="button">登入</button>
-    </div>
   </div>
-  <pre>{{ form.value | json }}</pre>
+  
+  json: {{ form.value | json }} <br/>
+  error: {{ form.errors | json }}
 
   

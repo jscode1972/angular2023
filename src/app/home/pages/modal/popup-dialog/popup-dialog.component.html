@@ -1,0 +1,27 @@
+<!-- 再次確認 -->
+<div class="modal fade" id="{{key}}" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <!--div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">{{title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div-->
+        <!-- body -->
+        <div class="modal-body">
+            <ng-content> 
+                <!-- 主要內容 -->
+            </ng-content>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <ng-content select="[footer]">
+            <!--button type="button" class="btn btn-default" id="modal-btn-ok">Confirm</button-->
+            <!--button type="button" class="btn btn-primary" id="modal-btn-no">Cancel</button-->
+            <!-- 我覺得需要互動才能寫入, button 還是當參數好了, 改成動態產生!!! -->
+          </ng-content> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--div class="alert" role="alert" id="result"></div-->

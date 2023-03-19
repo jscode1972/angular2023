@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 export enum Layout {
   AdminLTE = 1,
   Custom = 2,
-  Angular = 3
+  Angular = 3,
+  Fancy = 4
 }
 
 @Injectable({

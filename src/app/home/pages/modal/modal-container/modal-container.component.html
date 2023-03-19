@@ -20,36 +20,34 @@
     </tr>
 </table>
 
-<app-popup-modal #modal modalSize="modal-lg">
+<app-popup-modal #modal [title]="input.header" modalSize="modal-lg">
     <!-- header -->
-    <ng-container [ngSwitch]="inputState" header>
+    <!--ng-container [ngSwitch]="inputState" header>
         <ng-container *ngSwitchCase="1">新增使用者</ng-container>
         <ng-container *ngSwitchCase="2">修改使用者</ng-container>
         <ng-container *ngSwitchCase="3">刪除使用者</ng-container>
-    </ng-container>
+    </ng-container-->
 
     <!-- input UI -->
-    <app-modal-input #input [modal]="modal" [confirm]="confirm"></app-modal-input>
+    <app-modal-input #input [modal]="modal" (callback)="onCallback($event)"></app-modal-input>
     
     <!-- input footer -->
     <ng-container footer>
-        <button class="btn-grad" (click)="onSubmit()">Submit</button>
+        <button class="btn-grad" (click)="input.onSubmit()">Submit</button>
         <button class="btn-grad btn-exit" data-bs-dismiss="modal">Exit</button>
     </ng-container>
 </app-popup-modal>
 
-<app-popup-confirm #confirm>
-    <!-- header 不需要 -->
-    <!-- body -->
+<!--app-popup-confirm #confirm>
+
     <ng-container [ngSwitch]="inputState">
       <ng-container *ngSwitchCase="1">確定新增?</ng-container>
       <ng-container *ngSwitchCase="2">確定修改?</ng-container>
       <ng-container *ngSwitchCase="3">確定刪除?</ng-container>
     </ng-container>
-    <!-- confirm footer -->
     <ng-container footer>
         <button type="button" class="btn btn-primary" (click)="onConfirm()">Confirm</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
     </ng-container>
-</app-popup-confirm>
+</app-popup-confirm-->
 

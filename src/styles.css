@@ -1,0 +1,15 @@
+fieldset {
+    margin: 0 1em;
+    margin-bottom: 1em !important;
+    border: 2px solid rgb(45, 108, 196) !important;
+    border-radius: 5px;
+    padding: 10px !important;
+    width: 45%;
+    display: inline-block;
+}
+
+legend {
+    padding: 1px 10px !important;
+    float:none;
+    width:auto;
+}

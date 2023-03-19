@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  --header-height: 80px;
+  --sidebar-width: 200px;
+}
+
+.wrapper {
+  background-color: rgb(238, 238, 238);
+  margin: auto;
+  width: 1024px;
+  height: 100vh;
+}
+
+.header {
+  position: absolute;
+  background-color: rgb(51, 255, 0);
+  left: 0;
+  top: 0;
+  width: 90%;
+  height: calc(var(--header-height));
+}
+
+.sidebar {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: rgb(255, 221, 0);
+  left: 0;
+  top: calc(var(--header-height));
+  width: calc(var(--sidebar-width));
+  height: calc(100vh - var(--header-height)); /* 此處用 bottom: 0; 會跑版 */
+}
+
+.content {
+  position: absolute;
+  background-color: rgb(177, 67, 161);
+  left: calc(var(--sidebar-width));
+  top: calc(var(--header-height));
+  bottom: 0;
+  right: 0;
+  overflow-y:scroll;
+  overflow-x:scroll;
+}
+

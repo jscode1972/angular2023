@@ -1,6 +1,15 @@
 自訂同步驗證實作方法會『傳入要驗證的表單控制項』, 並回傳 ValidationErrors 或 null<br/>
 來表示是否通過驗證,<br/>
-<p style="color:red">此範例有錯 2023/02/23 </p>
+
+<button (click)="onAdd()">Add</button>
+<button (click)="onDel()">Del</button> 
+<span style="color:red">此範例無作用 </span><span style="color:blue">=> (已訂正 2023/03/17)</span>
+<br/>
+
+錯誤訊息1: <span *ngIf="tasks.hasError('cannotEmpty')">至少需要一筆工作事項</span><br/>
+錯誤訊息2: <span *ngIf="tasks.hasError('tooMany')">太多工作事項</span>
+
+<p style="color:red"></p>
 <div [formGroup]="form">
     <div formArrayName="Tasks" *ngFor="let control of tasks.controls; let index = index">
       <ng-container [formGroupName]="index">
@@ -8,7 +17,9 @@
         <input type="text" placeholder="內容" formControlName="Content" />
       </ng-container>
     </div>
-    <span *ngIf="tasks.hasError('cannotEmpty')">至少需要一筆工作事項</span>
-  </div>
-  <pre>{{ tasks.errors | json }}</pre>
+</div>
+
+errors: {{ tasks.errors | json }}
+value: {{ tasks.value | json }} <br/>
+
   

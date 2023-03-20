@@ -51,8 +51,8 @@ export class ModalContainerComponent implements OnInit {
   }
 
   onCallback(succ : boolean) {
-    this.modal.hide();
     if (succ) {
+      this.modal.hide();
       this.onQuery();
     }
   }

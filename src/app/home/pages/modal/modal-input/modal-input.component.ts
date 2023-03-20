@@ -22,8 +22,6 @@ export class ModalInputComponent implements OnInit {
   frm !: FormGroup;
   nums : number[] = [];
 
-  @Input() modal !: PopupModalComponent;
-  //@Input() confirm !: PopupDialogComponent;
   @Output() callback = new EventEmitter();
   @ViewChild('warning') warning !: PopupDialogComponent;
   @ViewChild('confirm') confirm !: PopupDialogComponent;
@@ -96,6 +94,8 @@ export class ModalInputComponent implements OnInit {
 
   saveForm() : Observable<boolean> {
     // 到時候加上 api 此處 boolan => WrapResult
+    // 到時候加上 api 此處 boolan => WrapResult
+    // 到時候加上 api 此處 boolan => WrapResult
     switch(this.inputState) {
       case InputState.Insert: 
         return this.svc.addUser(this.frm.value);
@@ -120,6 +120,8 @@ export class ModalInputComponent implements OnInit {
   onConfirm() {
     this.confirm.hide();
     this.saveForm().subscribe((succ) => {
+      // succ => p.succ
+      // alert(p.message)
       if (succ) {
         this.callback.emit(true);
       } else {

@@ -1,0 +1,20 @@
+{
+    "menu": {
+        "home": "Home",
+        "link": "Links",
+        "todo": "Todo",
+        "feature": {
+            "name": "Feature module",
+            "form": "Form"
+        },
+        "language": "Language",
+        "languageList": {
+            "taiwanese": "繁體中文",
+            "english": "English"
+        }
+    },
+    "HeaderComponent": {
+        "link": "Links({{lang}})",
+        "todo": "Todo({{lang}})"
+    }
+}

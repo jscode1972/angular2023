@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShadowButtonComponent } from './buttons';
+import { ShadowButtonComponent } from '.';
 
 @NgModule({
   declarations: [

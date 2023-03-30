@@ -5,13 +5,13 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" [routerLink]="['/']">Home</a>
+            <a class="nav-link" [routerLink]="['/']">{{ 'menu.home' | translate }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" [routerLink]="['links']">網路連結</a>
+            <a class="nav-link" [routerLink]="['links']">{{ 'link' | myTranslate }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" [routerLink]="['todo']">待辦事項</a>
+            <a class="nav-link" [routerLink]="['todo']">{{ 'todo' | myTranslate:this:{lang:'xx'} }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" [routerLink]="['demo']">Demo</a>
@@ -31,6 +31,15 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
+        <li>
+            <select name="lang" (change)="useLanguage($event.target)">
+                <option value="en-US">US</option>
+                <option value="zh-TW">TW</option>
+            </select>
+        </li>
+        <li>
+            <span>{{currentLanguage}}</span>
+        </li>
         <li class="nav-item">
             <a class="nav-link" style="cursor:pointer" (click)="layout=2">Customize</a>
         </li>

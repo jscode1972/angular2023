@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MultiColumnComponent } from './cards';
+import { MultiColumnComponent } from '.';
 
 @NgModule({
   declarations: [

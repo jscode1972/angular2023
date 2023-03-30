@@ -92,8 +92,7 @@ export const stackblitz = {
         rf_form_conponent: 'https://stackblitz.com/edit/ng-book-rf-form-conponent'
     },
     router: {
-        router: 'https://stackblitz.com/edit/ng-book-router',
-
+        router:    'https://stackblitz.com/edit/ng-book-router',
         router_pattern_snapshot: 'https://stackblitz.com/edit/ng-book-router-pattern-snapshot',
         router_param:          'https://stackblitz.com/edit/ng-book-router-param',
         router_query_string:   'https://stackblitz.com/edit/ng-book-router-query-string',

@@ -14,17 +14,16 @@ export class AuthorizeGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     //state: RouterStateSnapshot): Observable | Promise<any> | boolean {
-    state: RouterStateSnapshot): Promise<any> | boolean {
+    state: RouterStateSnapshot): Promise<boolean> | boolean | void {
       if (this.jwtService.getAccount()) {
           if (this.jwtService.isTokenExpired()) {
             // Should Redirect Sig-In Page
-            
           } else {
             return true;
           }
       } else {
-        return new Promise((resolve) => {
-          this.loginService.signinCallBack()
+        return new Promise<boolean>((resolve) => {
+          this.loginService.signinCallBack() // 進行登入作業
           .then((e) => {
              resolve(true);
           }).catch((e : any) => {

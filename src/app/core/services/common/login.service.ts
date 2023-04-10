@@ -8,7 +8,7 @@ export class LoginService {
   constructor() { }
 
   signinCallBack() {
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
       // 隨機取得 0 or 1
       const num = Math.random() > 0.5 ? 1 : 0;
   
@@ -16,7 +16,7 @@ export class LoginService {
       if (num) { 
         resolve('成功');
       }
-      reject('失敗')
+      reject('失敗');
     });
   }
 }

@@ -1,5 +1,5 @@
 {
-    "menu": {
+    "Menu": {
         "home": "Home",
         "link": "Links",
         "todo": "Todo",
@@ -13,8 +13,12 @@
             "english": "English"
         }
     },
+    "Common": {
+
+    },
     "HeaderComponent": {
         "link": "Links({{lang}})",
-        "todo": "Todo({{lang}})"
+        "todo": "Todo({{lang}})",
+        "你是哪位?" : "Are you {{name}}?"
     }
 }

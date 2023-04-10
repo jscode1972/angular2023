@@ -1,5 +1,5 @@
 {
-    "menu": {
+    "Menu": {
         "home": "首頁",
         "link": "網路連結",
         "todo": "代辦事項",
@@ -13,8 +13,12 @@
             "english": "英文"
         }
     },
+    "Common": {
+
+    },
     "HeaderComponent": {
         "link": "網路連結({{lang}})",
-        "todo": "代辦事項({{lang}})"
+        "todo": "代辦事項({{lang}})",
+        "你是哪位?" : "你是{{name}}嗎?"
     }
 }

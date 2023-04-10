@@ -66,7 +66,7 @@ export class LocalStorageService {
   }
 
   /********************************************
-   * 加/解密 (有衝突,暫時不裝) 
+   * 加/解密 (bootstrap 5x? 有衝突,暫時不裝) 
    ********************************************
     
   private encrypt(txt: string): string {

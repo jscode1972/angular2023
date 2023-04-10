@@ -14,21 +14,23 @@ export class JwtTokenService {
   decodedToken: { [key: string]: string }  = {};
 
   constructor(private localStorage : LocalStorageService) {  
+    // 改用相依注入,確保先執行 localStorage
     var token = this.localStorage.getToken();
     this.setToken(token!);
+  }
+
+  private decodeToken() {
+    // this.jwtToken = this.localStorage.getToken() as string; // 不要與儲存媒體耦合
+    if (this.jwtToken) {
+      this.decodedToken = jwt_decode(this.jwtToken);
+    }
   }
 
   setToken(token: string) {
     if (token) {
       this.jwtToken = token;
     }
-  }
-
-  decodeToken() {
-    // this.jwtToken = this.localStorage.getToken() as string; // 不要與儲存媒體耦合
-    if (this.jwtToken) {
-      this.decodedToken = jwt_decode(this.jwtToken);
-    }
+    this.decodeToken();
   }
 
   getDecodeToken() {

@@ -52,7 +52,8 @@ export class JwtTokenService {
     const expiryTime: number = this.getExpiryTime();
     if (expiryTime) {
       // 此處要考慮時區因素, 建議用 UTC time
-      return ((1000 * expiryTime) - (new Date()).getTime()) < 5000;
+      //return ((1000 * expiryTime) - (new Date()).getTime()) < 5000;
+      return ((1 * expiryTime) - (new Date()).getTime()) < 5;
     } else {
       return false;
     }

@@ -36,7 +36,7 @@ export class LocalStorageService {
   }
 
   /********************************************
-   *  特殊 key/val
+   *  token
    ********************************************/
 
   public saveToken(token: string): void {
@@ -47,6 +47,10 @@ export class LocalStorageService {
   public getToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
   }
+
+  /********************************************
+   *  user
+   ********************************************/
 
   public saveUser(user: any): void {
     //localStorage.removeItem(USER_KEY);

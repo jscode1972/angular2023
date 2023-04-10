@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // 模組要加入
 import { Observable, of, range, toArray } from 'rxjs';
-import { UserService } from 'src/app/core';
+import { EmpService } from 'src/app/core';
 import { InputState, User } from 'src/app/models';
 import { PopupModalComponent, PopupDialogComponent } from '../..';
 
@@ -27,7 +27,7 @@ export class ModalInputComponent implements OnInit {
   @ViewChild('confirm') confirm !: PopupDialogComponent;
 
   constructor(private fb : FormBuilder,
-              private svc : UserService
+              private svc : EmpService
   ) {}
 
   get header() : string {

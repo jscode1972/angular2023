@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { InputState, User } from 'src/app/models';
-import { UserService } from 'src/app/core';
+import { EmpService } from 'src/app/core';
 import { ModalInputComponent, PopupModalComponent } from '../..';
 
 declare var $ : any;
@@ -19,7 +19,7 @@ export class ModalContainerComponent implements OnInit {
   @ViewChild(PopupModalComponent) modal !: PopupModalComponent;
   //@ViewChild(PopupConfirmComponent) confirm !: PopupConfirmComponent;
 
-  constructor(private svc : UserService) {}
+  constructor(private svc : EmpService) {}
 
   ngOnInit(): void {
     this.onQuery();

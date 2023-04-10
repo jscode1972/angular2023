@@ -6,7 +6,7 @@ import { USERS } from 'src/app/models/mocks';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class EmpService {
 
   users : User[] = [];
 

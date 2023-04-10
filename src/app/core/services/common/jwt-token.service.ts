@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import * as jwt_decode from 'jwt-decode';
 import jwt_decode from 'jwt-decode';
-// import { LocalStorageService } from './local-storage.service'; // 不要與儲存媒體耦合
+import { LocalStorageService } from './local-storage.service'; // 不要與儲存媒體耦合?
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,10 @@ export class JwtTokenService {
   jwtToken: string = '';
   decodedToken: { [key: string]: string }  = {};
 
-  constructor() {  }
+  constructor(private localStorage : LocalStorageService) {  
+    var token = this.localStorage.getToken();
+    this.setToken(token!);
+  }
 
   setToken(token: string) {
     if (token) {
@@ -35,13 +38,13 @@ export class JwtTokenService {
 
   getAccount() : any {
     this.decodeToken();
-    return this.decodedToken ? this.decodedToken['Account'] : null;
+    return this.decodedToken ? this.decodedToken['account'] : null;
   }
 
   getExpiryTime() : number {
     this.decodeToken();
     return this.decodedToken ? parseInt(this.decodedToken['exp']) : 0; // null;
-  }
+  }  
 
   isTokenExpired(): boolean {
     const expiryTime: number = this.getExpiryTime();

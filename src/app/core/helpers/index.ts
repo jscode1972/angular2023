@@ -1,2 +1,2 @@
 export * from './auth-interceptor';
-//export * from './authorize-guard';
+export * from './authorize-guard';

@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { LanguageService, Layout, LayoutService } from 'src/app/core';
+import { Component, OnInit } from '@angular/core';
+import { Observer } from 'rxjs';
+import { LanguageService, Layout, LayoutService, UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Angular2023';
 
-  constructor(private layoutService : LayoutService,
-              private langService: LanguageService ) {
+  constructor(private layoutService: LayoutService,
+              private langService: LanguageService,
+              private userService: UserService ) {
                 
     /**********************************************************
      * 參考: https://edwardzou.blogspot.com/2019/01/ngx-translate.html
@@ -20,9 +22,33 @@ export class AppComponent {
      * 其他模組的內容也能跟著切換，在延遲載入模組時也能有一樣的效果
     ********************************************************* */
     this.langService.setInitState();
+
+    // 訂閱
+    this.userService.getLoginStatus().subscribe(this.loginOberserver);
+    this.userService.getCurrentUser().subscribe(this.userOberserver); 
+  }
+
+  ngOnInit(): void {
+    // 假如尚未登入 (localStorage/JWT)
+    if (!false) {
+      // 導向 login.html
+      this.userService.login('ben', '名字');
+    }
   }
 
   get layout() : Layout{
     return this.layoutService.layout;
+  }
+
+  loginOberserver = {
+    next: (data: any) => { console.log('登入狀態', data) },
+    error: (err: any) => { console.log('登入狀態', err) },
+    complete: () => {}
+  }
+
+  userOberserver = {
+    next: (data: any) => { console.log('使用者帳號', data) },
+    error: (err: any) => { console.log('使用者錯誤', err) },
+    complete: () => {}
   }
 }

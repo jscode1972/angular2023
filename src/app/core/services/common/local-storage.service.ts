@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 //import * as CryptoJS from 'crypto-js'; // 
 
 //const ENCYPT_KEY = '123';
@@ -12,8 +13,24 @@ export class LocalStorageService {
   
   // 參考: https://www.bezkoder.com/angular-12-jwt-auth/
 
+  private tokenSource = new BehaviorSubject<string>(''); 
+  public tokenData = this.tokenSource.asObservable();
+
   constructor() { }
-  
+
+  /********************************************
+   * 加/解密 (bootstrap 5x? 有衝突,暫時不裝) 
+   ********************************************
+    
+  private encrypt(txt: string): string {
+    return CryptoJS.AES.encrypt(txt, ENCYPT_KEY).toString();
+  }
+
+  private decrypt(txtToDecrypt: string) {
+    return CryptoJS.AES.decrypt(txtToDecrypt, ENCYPT_KEY).toString(CryptoJS.enc.Utf8);
+  }
+  *******************************************/
+
   /********************************************
    *  一般 key/val
    ********************************************/
@@ -42,6 +59,7 @@ export class LocalStorageService {
   public saveToken(token: string): void {
     //localStorage.removeItem(TOKEN_KEY);
     localStorage.setItem(TOKEN_KEY, token);
+    this.tokenSource.next(token);
   }
 
   public getToken(): string | null {
@@ -65,16 +83,5 @@ export class LocalStorageService {
     return {};
   }
 
-  /********************************************
-   * 加/解密 (bootstrap 5x? 有衝突,暫時不裝) 
-   ********************************************
-    
-  private encrypt(txt: string): string {
-    return CryptoJS.AES.encrypt(txt, ENCYPT_KEY).toString();
-  }
 
-  private decrypt(txtToDecrypt: string) {
-    return CryptoJS.AES.decrypt(txtToDecrypt, ENCYPT_KEY).toString(CryptoJS.enc.Utf8);
-  }
-  *******************************************/
 }

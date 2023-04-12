@@ -15,8 +15,9 @@ export class JwtTokenService {
 
   constructor(private localStorage : LocalStorageService) {  
     // 改用相依注入,確保先執行 localStorage
-    var token = this.localStorage.getToken();
-    this.setToken(token!);
+    this.localStorage.tokenData.subscribe((token) => {
+      this.setToken(token!);
+    });
   }
 
   private decodeToken() {
@@ -30,21 +31,21 @@ export class JwtTokenService {
     if (token) {
       this.jwtToken = token;
     }
-    this.decodeToken();
+    this.decodeToken(); // 當寫入就解析 
   }
 
   getDecodeToken() {
-    this.decodeToken();
+    //this.decodeToken(); // 應該不需要
     return this.decodedToken; //jwt_decode(this.jwtToken);
   }
 
   getAccount() : any {
-    this.decodeToken();
+    //this.decodeToken(); // 應該不需要
     return this.decodedToken ? this.decodedToken['account'] : null;
   }
 
   getExpiryTime() : number {
-    this.decodeToken();
+    //this.decodeToken(); // 應該不需要
     return this.decodedToken ? parseInt(this.decodedToken['exp']) : 0; // null;
   }  
 

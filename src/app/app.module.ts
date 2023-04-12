@@ -9,7 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 //
-import { authInterceptorProviders } from './core/helpers';
+import { authInterceptorProviders, noopInterceptorProviders } from './core/helpers';
 import { SharedModule } from './shared';
 import { LayoutModule, AdminlteModule } from './layout';
 import { HomeModule } from './home';
@@ -47,9 +47,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   exports: [
   ],
-  providers: [
-    { provide: Window, useValue: window },    // 匯入 window 物件, 可使用 DI
-    authInterceptorProviders
+  providers: [    
+    authInterceptorProviders, 
+    noopInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

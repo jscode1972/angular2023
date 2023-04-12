@@ -8,13 +8,19 @@ const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private localStorage: LocalStorageService) { }
+
+  token !: string;
+
+  constructor(private localStorage: LocalStorageService) { 
+    this.localStorage.tokenData.subscribe((token) => {
+      this.token = token;
+    });
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
-    const token = this.localStorage.getToken();
-    if (token != null) {
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+    if (this.token != null) {
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token) });
     }
     return next.handle(authReq);
   }

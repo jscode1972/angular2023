@@ -8,7 +8,7 @@
             <a class="nav-link" [routerLink]="['/']">{{ 'Menu.home' | translate }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" [routerLink]="['links']">{{ 'link' | myTranslate }}</a>
+            <a class="nav-link" [routerLink]="['css']">{{ 'css' | myTranslate }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" [routerLink]="['todo']">{{ 'todo' | myTranslate:this:{lang:'xx'} }}</a>
@@ -45,6 +45,9 @@
         </li>
         <li>
             <a class="nav-link" style="cursor:pointer" (click)="layout=3">學習Angular</a>
+        </li>
+        <li *ngIf="valid">
+            <a class="nav-link" style="cursor:pointer" (click)="onLogout()">登出</a>
         </li>
     </ul>
 </nav>

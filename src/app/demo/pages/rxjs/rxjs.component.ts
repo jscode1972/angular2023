@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+//
 import { from, groupBy, mergeMap, toArray, map } from 'rxjs';
 
 interface MyTuple<T> {
@@ -26,6 +28,19 @@ export class RxjsComponent implements OnInit {
 
   menus : Menu[] = [];
 
+  routeNotify = {
+    next: (data:any) => {
+      console.log("RxjsComponent", data);
+    }
+  }
+
+  constructor( private route: ActivatedRoute,
+               private xx: ActivatedRouteSnapshot) {
+    //this.route.data.subscribe(this.routeNotify);
+    console.log("RxjsComponent", this.route.snapshot);
+    console.log("RxjsComponent", this.xx.url);
+  }
+
   ngOnInit() {
     from(Forms) 
     .pipe(
@@ -41,7 +56,7 @@ export class RxjsComponent implements OnInit {
       toArray()                              // 轉成陣列 (subscribe 就不會一個個觸發)
     )
     .subscribe( o => {
-        console.log(o);
+        //console.log(o);
         this.menus = o;
     } );
   }

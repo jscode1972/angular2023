@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/models';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,13 @@ export class UserService {
   loginStatus$ = new BehaviorSubject<boolean>(false);
   currentUser$ = new BehaviorSubject<User>(null!);
 
-  constructor(  private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+               private localStorage : LocalStorageService ) { 
+  
+    this.localStorage.getAccountNotify().subscribe(this.accountNotify);
+    this.localStorage.getExpiryNotify().subscribe(this.expiryNotify);
+    this.localStorage.getUserNotify().subscribe(this.userNotify);
+  }
 
   /*  https://angular.io/guide/http
   **********************************************************
@@ -25,6 +32,61 @@ export class UserService {
     responseType?: 'arraybuffer'|'blob'|'json'|'text',
     withCredentials?: boolean,
   }**********************************************************/
+
+  /*************************************************
+   * 觀察區
+   ************************************************/
+
+  accountNotify = {
+    // 當登入確定需抓個人資料
+    next: (account : string) => {
+      // 查詢 user 資料
+      if (account !== "") {
+        // 此處要進行 query
+        this.localStorage.saveUser({username: account, name: "Ben"});
+      }
+    },
+    error: (err : any) => {},
+    complete: ( ) => {},
+  }
+
+  expiryNotify = {
+    // 當 token change 需檢查
+    next: (expiry : boolean) => {
+      // 查詢 user 資料, 組裝之後送出通知
+      this.loginStatus$.next( !expiry ); 
+    },
+    error: (err : any) => {},
+    complete: ( ) => {},
+  }
+
+  userNotify = {
+    // 當登入確定需抓個人資料
+    next: (user : any) => {
+      // 查詢 user 資料
+      if (user) {
+        this.currentUser$.next(user); 
+      }
+    },
+    error: (err : any) => {},
+    complete: ( ) => {},
+  }
+
+  /*************************************************
+   * 訂閱區
+   ************************************************/
+
+  getLoginStatus(): Observable<boolean> {
+    return this.loginStatus$;
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.currentUser$;
+  }
+
+  /*************************************************
+   * 操作區
+   ************************************************/  
 
   loginXX(user : string, pass : string) {
     const headers = { 'content-type': 'application/json'};
@@ -38,7 +100,7 @@ export class UserService {
 
   login(user : string, name : string) {
     this.loginStatus$.next(true);
-    this.currentUser$.next( { pid: user, name: name } ); 
+    this.currentUser$.next( { pid: user, name: name } );  // 這裡要改為查詢
   }
 
   logout() {
@@ -46,11 +108,4 @@ export class UserService {
     this.currentUser$.next(null!);
   }
 
-  getLoginStatus(): Observable<boolean> {
-    return this.loginStatus$;
-  }
-
-  getCurrentUser(): Observable<User> {
-    return this.currentUser$;
-  }
 }

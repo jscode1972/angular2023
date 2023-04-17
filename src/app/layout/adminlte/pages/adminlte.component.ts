@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutService } from 'src/app/core';
+import { LayoutService, UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-adminlte',
@@ -8,5 +8,9 @@ import { LayoutService } from 'src/app/core';
 })
 export class AdminlteComponent {
 
-  constructor(public layout : LayoutService ) {}
+  constructor(public layout : LayoutService ) {
+
+  }
+
+  
 }

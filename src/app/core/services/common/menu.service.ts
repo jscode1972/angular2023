@@ -18,7 +18,7 @@ export class MenuService {
   getMenus(): void {
     this.backend.getMenus().subscribe(x => {
       this.messageService.add('MenuService: fetched menus');
-      this.logger.log(`Fetched ${x.length} menus.`);
+      //this.logger.log(`Fetched ${x.length} menus.`);
       this.menus = x;
     });
   };

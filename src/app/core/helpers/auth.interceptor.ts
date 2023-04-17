@@ -12,9 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
   token !: string;
 
   constructor(private localStorage: LocalStorageService) { 
-    this.localStorage.tokenData.subscribe((token) => {
-      this.token = token;
-    });
+    this.localStorage.getTokenNotify()
+      .subscribe(this.getTokenNotify);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -23,6 +22,15 @@ export class AuthInterceptor implements HttpInterceptor {
       authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + this.token) });
     }
     return next.handle(authReq);
+  }
+
+  getTokenNotify = {
+    // 當 token change 發生
+    next: (token : any) => {
+      this.token = token;
+    },
+    error: (err : any) => {},
+    complete: ( ) => {},
   }
 }
 

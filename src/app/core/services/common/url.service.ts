@@ -5,16 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class UrlService {
 
-  urlPath = new URL(window.location.href);
-  urlParams = new URLSearchParams(window.location.search);
+  // 不要這樣寫, 用到再 new
+  //urlPath = new URL(window.location.href);
+  //urlParams = new URLSearchParams(window.location.search);
 
   constructor() { }
 
   getParam(key : string) {
-    return this.urlParams.get(key);
+    //return this.urlParams.get(key);
   }
 
   delParam(key : string) {
-    this.urlParams.delete(key);
+    //this.urlParams.delete(key);
   }
 }

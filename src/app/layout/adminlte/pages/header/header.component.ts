@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Layout, LayoutService, LanguageService } from 'src/app/core';
+import { Layout, LayoutService, LanguageService, UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,34 @@ import { Layout, LayoutService, LanguageService } from 'src/app/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  valid : boolean = false;
+
   constructor(private layoutService : LayoutService,
-              private langService: LanguageService  ) {
-    //             
+              private langService: LanguageService,
+              private userService: UserService ) {
+    // 訂閱
+    this.userService.getLoginStatus().subscribe(this.validNotify); 
+    this.userService.getCurrentUser().subscribe(this.userNotify); 
+  }
+
+  validNotify = {
+    next: (login : boolean) => { 
+      //console.log('HeaderComponent-validNotify', login);
+      this.valid = login;
+    },
+    error: (err: any) => { console.log('登入狀態', err) },
+    complete: () => {}
+  }
+
+  userNotify = {
+    next: (user: any) => { 
+      if (user) {
+        //console.log('HeaderComponent-userNotify', user);
+      }
+    },
+    error: (err: any) => { console.log('使用者錯誤', err) },
+    complete: () => {}
   }
 
   // 版面變換
@@ -35,5 +60,9 @@ export class HeaderComponent {
   useLanguage(language: any) {
     //console.log(language.value);
     this.langService.setLang(language.value);
+  }
+
+  onLogout() {
+   this.userService.logout(); 
   }
 }

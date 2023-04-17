@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: 'demo', 
     component: DemoComponent,
     children: [
-      { path: 'rxjs', component: RxjsComponent },
+      { path: 'rxjs/:id', component: RxjsComponent },
       { path: 'w2ui', component: W2uiComponent },
       { path: 'modal', component: ModalTestComponent },
       { path: '', redirectTo: 'rxjs', pathMatch: 'full' },

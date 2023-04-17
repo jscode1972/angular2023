@@ -4,16 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
 import { SharedModule } from '../shared';
 import { HomeRoutingModule } from './home-routing.module';
-import { LinksComponent, TodoComponent, 
+import { CssComponent, TodoComponent, 
          ModalContainerComponent, ModalInputComponent,
          PopupModalComponent, PopupDialogComponent
         } from './pages';
 
 @NgModule({
   declarations: [
-    TodoComponent, LinksComponent,
+    TodoComponent, CssComponent,
     ModalContainerComponent, ModalInputComponent, 
-    PopupModalComponent, PopupDialogComponent, //PopupConfirmComponent
+    PopupModalComponent, PopupDialogComponent, CssComponent, //PopupConfirmComponent
   ],
   imports: [
     CommonModule,

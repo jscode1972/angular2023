@@ -60,11 +60,12 @@ export class JwtTokenService {
   public setToken(token: string) {
     if (typeof token !== 'string') return;
     //
-    if (token) {
+    if (!!token) {
       this.jwtToken = token;
       this.decodedToken = jwt_decode(this.jwtToken);
-      //console.log("JwtTokenService", this.decodedToken);
+      // 儲存
       this.localStorage.saveToken(this.jwtToken);
+      // 通知
       this.tokenSource$.next(this.jwtToken);
       this.accountSource$.next(this.getAccount()!);
       this.expirySource$.next(this.isExpired());  // 可以改用 timer?
@@ -73,7 +74,7 @@ export class JwtTokenService {
 
   public isExpired(): boolean {
     const expiryTime: number = this.getExpiryTime(); //單位:秒
-    if (expiryTime) {
+    if (!!expiryTime) {
       // exp:     1696239022    (秒), 
       // getTime: 1684861944370 (毫秒)
       // 此處要考慮時區因素, 建議用 UTC time

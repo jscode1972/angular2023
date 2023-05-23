@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { AppInitService, LanguageService, Layout, LayoutService, LocalStorageService, JwtTokenService, UserService } from 'src/app/core';
+import { AppInitService, LanguageService, Layout, LayoutService,
+     LocalStorageService, JwtTokenService, LoginService } from 'src/app/core';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,8 @@ export class AppComponent implements OnInit {
               private layoutService: LayoutService,
               private langService: LanguageService,
               //private localStorage: LocalStorageService,
-              private jwtTokenService: JwtTokenService,
-              private userService: UserService,
+              //private jwtTokenService: JwtTokenService,
+              private loginService: LoginService,
               private route: ActivatedRoute ) {
                 
     this.config = this.appInitService.getConfig();
@@ -35,8 +36,8 @@ export class AppComponent implements OnInit {
     this.langService.setInitState();
 
     // 訂閱
-    this.userService.getLoginStatus().subscribe(this.validNotify); 
-    this.userService.getCurrentUser().subscribe(this.userNotify); 
+    this.loginService.getLoginStatus().subscribe(this.validNotify); 
+    this.loginService.getCurrentUser().subscribe(this.userNotify); 
   }
 
   ngOnInit(): void {
@@ -123,10 +124,13 @@ export class AppComponent implements OnInit {
   }
 
   onLogin(){
+    
+    /*
     let ok = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjk2MjM5MDIyfQ.E9CC_nQmnNT7EzbyTNeH8krypdMwP7O2p5QW7vM5MjU";
     let ng = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjE2MjM5MDIyfQ.-iR0Ut5iCJuEhAXLPB04bxE5FKgtosWuP7yVfYP5lgg";
     let token = ok; 
     this.jwtTokenService.setToken(token);
+    */
   }
 
 }

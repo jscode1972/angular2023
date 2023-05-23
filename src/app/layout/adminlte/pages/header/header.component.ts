@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Layout, LayoutService, LanguageService, UserService } from 'src/app/core';
+import { Layout, LayoutService, LanguageService, LoginService } from 'src/app/core';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +12,10 @@ export class HeaderComponent {
 
   constructor(private layoutService : LayoutService,
               private langService: LanguageService,
-              private userService: UserService ) {
+              private loginService: LoginService ) {
     // 訂閱
-    this.userService.getLoginStatus().subscribe(this.validNotify); 
-    this.userService.getCurrentUser().subscribe(this.userNotify); 
+    this.loginService.getLoginStatus().subscribe(this.validNotify); 
+    this.loginService.getCurrentUser().subscribe(this.userNotify); 
   }
 
   validNotify = {
@@ -63,6 +63,6 @@ export class HeaderComponent {
   }
 
   onLogout() {
-   this.userService.logout(); 
+   this.loginService.logout(); 
   }
 }

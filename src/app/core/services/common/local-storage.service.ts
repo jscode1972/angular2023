@@ -14,20 +14,10 @@ export class LocalStorageService {
   // 參考: https://www.bezkoder.com/angular-12-jwt-auth/
 
   // local storage 不要放 subject, 時機不對
-  private userSource$ = new BehaviorSubject<any>(null);     
+  //private userSource$ = new BehaviorSubject<any>(null);     
 
   constructor() {  
     // 預設從 localStorage 抓取
-    //this.userSource$.next(this.getUser());
-  }
-
-  /*************************************************
-   * 訂閱區
-   ************************************************/
-
-  public getUserNotify() : Observable<any> {
-    // 設置 timer 隨時觸發更新
-    return this.userSource$.asObservable();
   }
 
   /********************************************
@@ -52,8 +42,6 @@ export class LocalStorageService {
   public saveUser(user: any): void {
     //localStorage.removeItem(USER_KEY);
     localStorage.setItem(USER_KEY, JSON.stringify(user)); // 儲存物件先轉過
-    // 通知相關畫面
-    this.userSource$.next(user);
   }
 
   public getUser(): any {

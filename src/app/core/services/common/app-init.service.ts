@@ -26,12 +26,10 @@ export class AppInitService {
         };
         //
         if (!this.jwtTokenService.isExpired()) {
-          resolve(true);
-        } else {
-          //reject();     // 空白畫面
-          resolve(false); // 進入 Login 
-          //window.location.href = "https://www.google.com";
-        }
+          resolve(''); // 事件已經執行完畢且成功操作，回傳 resolve 的結果 (名稱可以自定義)
+        } 
+        //reject();  // 事件已經執行完畢但操作失敗，回傳 rejected 的結果 (名稱可以自定義)
+        //window.location.href = "https://www.google.com";
       }, 1000);
     });
   }

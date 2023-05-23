@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '',   component: HomeComponent,    canActivate: [AuthorizeGuard]},
   { path: 'css', component: CssComponent },
   { path: 'todo', component: TodoComponent },
-  { path: 'modal', component: ModalContainerComponent }
+  { path: 'modal', component: ModalContainerComponent },
+  { path: 'home', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

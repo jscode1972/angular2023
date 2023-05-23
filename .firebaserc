@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-202304198": {
+      "hosting": {
+        "Angular2023": [
+          "test-202304198"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-202304198"
+  }
+}

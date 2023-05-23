@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // 用到再加
+// firebase
+//import { AngularFireModule } from '@angular/fire';
+//import { AngularFirestoreModule } from '@angular/fire/firestore';
+//import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 // Ngx-Translate 翻譯工具
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -10,11 +14,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 //
 import { authInterceptorProviders, noopInterceptorProviders } from './core/helpers';
+import { AppInitService, initializeAppProviders } from './core/services';
 import { SharedModule } from './shared';
 import { LayoutModule, AdminlteModule } from './layout';
 import { HomeModule } from './home';
 import { DemoModule  } from './demo/demo.module';
-import { AngularModule } from './angular'; // 獨立一塊
+import { AngularModule } from './angular';
+import { environment } from '../environments/environment';
+
+/*
+export function initializeApp(appInitService: AppInitService) {
+  return () => appInitService.initializeApp();
+}*/
 
 // Material-UI: https://material.angular.io/guide/getting-started
 // Material-UI: https://material.angular.io/components/tabs/examples
@@ -33,6 +44,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule, // 若要使用 http 連線
     //FormsModule, ReactiveFormsModule, // 用到再加
     AppRoutingModule,
+    // firebase
+//    AngularFireModule.initializeApp(environment.firebase),
+//    AngularFirestoreModule,
+//    AngularFireAnalyticsModule,
+    //
     SharedModule, LayoutModule, AdminlteModule, 
     HomeModule, DemoModule, AngularModule,
     // material UI => BrowserAnimationsModule, 
@@ -44,10 +60,13 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     })
+  
   ],
   exports: [
   ],
   providers: [    
+    //AppInitService,
+    initializeAppProviders,
     authInterceptorProviders, 
     noopInterceptorProviders
   ],

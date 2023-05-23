@@ -7,9 +7,10 @@ import { LocalStorageService, JwtTokenService, LoginService } from '../services'
   providedIn: 'root'
 })
 export class AuthorizeGuard implements CanActivate {
+
   constructor(private router: Router,
               private loginService : LoginService,
-              private localStorage: LocalStorageService,
+              //private localStorage: LocalStorageService,
               private jwtService: JwtTokenService) {
   }
   canActivate(
@@ -18,7 +19,7 @@ export class AuthorizeGuard implements CanActivate {
     state: RouterStateSnapshot) : Promise<boolean> | boolean  {
       let acc = this.jwtService.getAccount();
       if (this.jwtService.getAccount()) {
-          if (this.jwtService.isTokenExpired()) {
+          if (this.jwtService.isExpired()) {
             // Should Redirect Sig-In Page
             // redirect to some view explaining what happened
             //window.location.href = 'https://a4a4a4a4.com';

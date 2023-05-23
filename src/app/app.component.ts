@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { LanguageService, Layout, LayoutService, LocalStorageService, UserService } from 'src/app/core';
+import { AppInitService, LanguageService, Layout, LayoutService, LocalStorageService, JwtTokenService, UserService } from 'src/app/core';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +12,19 @@ export class AppComponent implements OnInit {
 
   title = 'Angular2023';
   valid : boolean = false;
+  config: any;
 
-  constructor(private layoutService: LayoutService,
+  constructor(private appInitService: AppInitService,
+              private layoutService: LayoutService,
               private langService: LanguageService,
-              private localStorage: LocalStorageService,
+              //private localStorage: LocalStorageService,
+              private jwtTokenService: JwtTokenService,
               private userService: UserService,
               private route: ActivatedRoute ) {
                 
+    this.config = this.appInitService.getConfig();
+    console.log("this.config ", this.config );
+    
     /**********************************************************
      * 參考: https://edwardzou.blogspot.com/2019/01/ngx-translate.html
      * 我們可以這樣來思考，很明顯的我們語系的轉換是會跨元件溝通的，
@@ -34,6 +40,33 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      console.log("AppComponent-route", params);
+      const token = params['token'];
+      console.log("AppComponent-params-token", token);
+    });
+
+/*    console.log("href", window.location.href);
+    console.log("search", window.location.search);
+    console.log("hash", window.location.hash);
+    const hash = window.location.hash;
+    const search = window.location.search;
+    console.log("hash", hash);
+    console.log("search", search);
+
+    const params = new URLSearchParams(search);
+    const recall = params.get('recall');
+    const token = params.get('token');
+    console.log("recall-2", recall);
+    console.log("token-2", token);
+
+    const hash3 = window.location.hash.substring(1);
+    const params3 = new URLSearchParams(hash3);
+    const token3 = params3.get('token');
+    console.log("token-3", token3);
+    */
+
     // 假如尚未登入 (localStorage/JWT)
     if (!false) {
       // 導向 login.html
@@ -90,8 +123,10 @@ export class AppComponent implements OnInit {
   }
 
   onLogin(){
-    let token : string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjA0ODk4NDUyMDg0fQ.53_G33jYBIosnRb-g7JEgNIYZ3ghTn5gj0Zwlgfp69M";
-    this.localStorage.saveToken(token);
+    let ok = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjk2MjM5MDIyfQ.E9CC_nQmnNT7EzbyTNeH8krypdMwP7O2p5QW7vM5MjU";
+    let ng = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjE2MjM5MDIyfQ.-iR0Ut5iCJuEhAXLPB04bxE5FKgtosWuP7yVfYP5lgg";
+    let token = ok; 
+    this.jwtTokenService.setToken(token);
   }
 
 }

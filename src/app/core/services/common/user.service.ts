@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/models';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService, JwtTokenService } from '.';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,11 @@ export class UserService {
   currentUser$ = new BehaviorSubject<User>(null!);
 
   constructor( private http: HttpClient,
-               private localStorage : LocalStorageService ) { 
+               private localStorage : LocalStorageService,
+               private jwtService : JwtTokenService ) { 
   
-    this.localStorage.getAccountNotify().subscribe(this.accountNotify);
-    this.localStorage.getExpiryNotify().subscribe(this.expiryNotify);
+    this.jwtService.getAccountNotify().subscribe(this.accountNotify);
+    this.jwtService.getExpiryNotify().subscribe(this.expiryNotify);
     this.localStorage.getUserNotify().subscribe(this.userNotify);
   }
 

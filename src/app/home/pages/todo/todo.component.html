@@ -1,1 +1,38 @@
 <p>todo works!</p>
+
+<button (click)="onGeo()">onGeo</button>
+
+<pre>
+    {{ geo | json }}
+</pre>
+
+<table style="border: 1px solid black;">  
+    <tr>
+        <th style="width: 300px;" rowspan="2">Todo 元件 </th>
+        <th colspan="2">useHash</th>
+    </tr>
+    <tr>
+        <th>true (有#)</th>
+        <th>false (無#)</th>
+    </tr>
+    <tr>
+        <td>ActivatedRoute</td>
+        <td> 成功 {{ foo1 }} {{ bar1 }} </td>
+        <td> 成功 {{ foo1 }} {{ bar1 }} </td>
+    </tr>
+    <tr>
+        <th>URLSearchParams</th>
+        <td> 失敗 {{ foo2 }} {{ bar2 }} </td>
+        <td> 成功 {{ foo2 }} {{ bar2 }} </td>
+    </tr>
+    <tr>
+        <th>/#/todo?foo=ben&bar=123</th>
+        <td> routing ok  </td>
+        <td> routing 失敗 </td>
+    </tr>
+    <tr>
+        <th>/todo?foo=ben&bar=123</th>
+        <td> routing 失敗 </td>
+        <td> routing ok </td>
+    </tr>
+</table>

@@ -1,0 +1,12 @@
+//const btn = document.querySelector("#btn");
+//const btn2 = document.querySelector("#btn2");
+
+/*
+Rx.Observable.fromEvent(btn, 'click')
+  .switchMap(  x => 
+    //tap( x=> console.log(x)),
+      return Rx.Observable.fromEvent(btn2, 'click')
+  )
+  .subscribe( 
+    () => alert('s')
+  );*/

@@ -11,6 +11,5 @@ export class AdminlteComponent {
   constructor(public layout : LayoutService ) {
 
   }
-
   
 }

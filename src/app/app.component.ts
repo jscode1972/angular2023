@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'Angular2023';
   valid : boolean = false;
   config: any;
+  user: any;
 
   constructor(private appInitService: AppInitService,
               private layoutService: LayoutService,
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
     this.langService.setInitState();
 
     // 訂閱
-    this.loginService.getLoginStatus().subscribe(this.validNotify); 
+    this.loginService.getLoginStatus().subscribe(this.loginNotify); 
     this.loginService.getCurrentUser().subscribe(this.userNotify); 
   }
 
@@ -99,32 +100,33 @@ export class AppComponent implements OnInit {
   pathFromRoot : ActivatedRouteSnapshot[]
    */
 
-  routeNotify = {
-    next: (data:any) => {
-      console.log("AppComponent-routeNotify", data);
-    }
-  }
 
-  validNotify = {
-    next: (login : boolean) => { 
-      this.valid = login;
+  loginNotify = {
+    // 當 token change 需檢查
+    next: (valid : boolean) => {
+      this.valid = valid;
+      if (!valid) {
+        // 或許改成畫面登出就好,不要跳轉
+        //this.loginService.gotoA4();
+      }
     },
-    error: (err: any) => { console.log('登入狀態', err) },
-    complete: () => {}
+    error: (err : any) => {},
+    complete: ( ) => {},
   }
 
   userNotify = {
-    next: (user: any) => { 
-      if (user) {
-        //console.log('AppComponent-userNotify', user);
-      }
+    // 當 token change 需檢查
+    next: (user : any) => {
+      // 查詢 user 資料, 組裝之後送出通知
+      this.user = user;
     },
-    error: (err: any) => { console.log('使用者錯誤', err) },
-    complete: () => {}
+    error: (err : any) => {},
+    complete: ( ) => {},
   }
 
-  onLogin(){
-    
+
+  onLogin() {
+
     /*
     let ok = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjk2MjM5MDIyfQ.E9CC_nQmnNT7EzbyTNeH8krypdMwP7O2p5QW7vM5MjU";
     let ng = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWNjb3VudCI6IkJlbiBIdWFuZyIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxNjE2MjM5MDIyfQ.-iR0Ut5iCJuEhAXLPB04bxE5FKgtosWuP7yVfYP5lgg";

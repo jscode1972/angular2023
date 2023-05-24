@@ -13,12 +13,10 @@ export class LocalStorageService {
   
   // 參考: https://www.bezkoder.com/angular-12-jwt-auth/
 
-  // local storage 不要放 subject, 時機不對
+  // local storage 僅開放給 jwt-token & user
   //private userSource$ = new BehaviorSubject<any>(null);     
 
-  constructor() {  
-    // 預設從 localStorage 抓取
-  }
+  constructor() { }
 
   /********************************************
    * 特殊物件 token

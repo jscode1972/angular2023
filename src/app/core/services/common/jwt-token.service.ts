@@ -24,7 +24,7 @@ export class JwtTokenService {
     // 預設先初始化 token
     this.setToken(this.localStorage.getToken()!);
     // 定期檢查
-    interval(60000)
+    interval(30000)
       .subscribe(() => {
         this.expirySource$.next(this.isExpired());
       });
@@ -70,6 +70,11 @@ export class JwtTokenService {
       this.accountSource$.next(this.getAccount()!);
       this.expirySource$.next(this.isExpired());  // 可以改用 timer?
     }
+  }
+
+  public isValid(): boolean { 
+    // 相反
+    return !this.isExpired();
   }
 
   public isExpired(): boolean {

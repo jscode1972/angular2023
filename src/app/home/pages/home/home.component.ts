@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   d : Date = new Date();
 
   constructor(private login : LoginService,
-              private localStorage : LocalStorageService,
+              private localStorageService : LocalStorageService,
               private route: ActivatedRoute) {
                 
     this.route.url.subscribe(this.routeNotify);
